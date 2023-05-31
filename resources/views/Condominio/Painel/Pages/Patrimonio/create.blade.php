@@ -1,0 +1,20 @@
+@extends('adminlte::page')
+
+@section('title', 'Cadastrar Patrimônio')
+
+@section('content_header')
+    <div align="right">
+        <a href="{{ route('patrimonio.index') }}" class="btn btn-dark"><i class="fas fa-backward"></i> Voltar</a>
+    </div>
+
+@stop
+
+@section('content')
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('patrimonio.store') }}" class="form" method="POST">
+                @include('Condominio.Painel.Pages.Patrimonio._partials.form')
+            </form>
+        </div>
+    </div>
+@stop
