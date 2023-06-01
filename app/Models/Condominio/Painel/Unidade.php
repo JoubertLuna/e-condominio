@@ -9,7 +9,7 @@ class Unidade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'bloco_id'];
+    protected $fillable = ['nome', 'url', 'bloco_id'];
 
     public function bloco()
     {

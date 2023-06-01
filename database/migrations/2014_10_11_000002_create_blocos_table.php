@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('blocos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('nome')->unique();
+            $table->string('url')->unique();
             $table->foreignId('condominio_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

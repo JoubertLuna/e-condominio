@@ -79,9 +79,9 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->find($id)) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -94,9 +94,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->find($id)) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -109,9 +109,9 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(UserRequest $request, string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->find($id)) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -144,9 +144,9 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->find($id)) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

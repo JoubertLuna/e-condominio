@@ -3,11 +3,17 @@
 use App\Http\Controllers\Auth\LoginController;
 
 use App\Http\Controllers\Condominio\Painel\{
+    AnuncioController,
+    AreaController,
+    AssembleiaController,
     BlocoController,
     CondominioController,
     HomeController,
+    LivroController,
+    PetController,
     UnidadeController,
-    UserController
+    UserController,
+    VeiculoController
 };
 
 use Illuminate\Support\Facades\Route;
@@ -38,21 +44,21 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::resource('user', UserController::class);
     #Route User
 
-    // #Route Pet
-    // Route::resource('pet', PetController::class);
-    // #Route Pet
+    #Route Pet
+    Route::resource('pet', PetController::class);
+    #Route Pet
 
-    // #Route Veiculo
-    // Route::resource('veiculo', VeiculoController::class);
-    // #Route Veiculo
+    #Route Veiculo
+    Route::resource('veiculo', VeiculoController::class);
+    #Route Veiculo
 
-    // #Route Area
-    // Route::resource('area', AreaController::class);
-    // #Route Area
+    #Route Area
+    Route::resource('area', AreaController::class);
+    #Route Area
 
-    // #Route Assembleia
-    // Route::resource('assembleia', AssembleiaController::class);
-    // #Route Assembleia
+    #Route Assembleia
+    Route::resource('assembleia', AssembleiaController::class);
+    #Route Assembleia
 
     // #Route Banco
     // Route::resource('banco', BancoController::class);
@@ -62,13 +68,13 @@ Route::middleware('auth', 'verified')->group(function () {
     // Route::resource('categoria', CategoriaController::class);
     // #Route Categoria
 
-    // #Route Livro
-    // Route::resource('livro', LivroController::class);
-    // #Route Livro
+    #Route Livro
+    Route::resource('livro', LivroController::class);
+    #Route Livro
 
-    // #Route Anuncio
-    // Route::resource('anuncio', AnuncioController::class);
-    // #Route Anuncio
+    #Route Anuncio
+    Route::resource('anuncio', AnuncioController::class);
+    #Route Anuncio
 
     // #Route Reserva
     // Route::resource('reserva', ReservaController::class);

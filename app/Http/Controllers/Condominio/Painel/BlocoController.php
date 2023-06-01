@@ -54,9 +54,9 @@ class BlocoController extends Controller
     /**
      * Show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$bloco = $this->bloco->with('condominio')->find($id)) {
+        if (!$bloco = $this->bloco->with('condominio')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -67,9 +67,9 @@ class BlocoController extends Controller
     /**
      * Edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$bloco = $this->bloco->with('condominio')->find($id)) {
+        if (!$bloco = $this->bloco->with('condominio')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -80,9 +80,9 @@ class BlocoController extends Controller
     /**
      * Update
      */
-    public function update(blocoRequest $request, $id)
+    public function update(blocoRequest $request, $url)
     {
-        if (!$bloco = $this->bloco->with('condominio')->find($id)) {
+        if (!$bloco = $this->bloco->with('condominio')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -96,9 +96,9 @@ class BlocoController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$bloco = $this->bloco->with('condominio')->find($id)) {
+        if (!$bloco = $this->bloco->with('condominio')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

@@ -24,14 +24,14 @@
 </div>
 <hr>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
             <label>Data do Anúncio:</label>
             <input type="date" name="data" id="data" class="form-control" placeholder="08/08/8888"
                 value="{{ $anuncio->data ?? old('data') }}">
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
             <label>Morador:</label>
             <select class="form-control" name="user_id" id="user_id" style="width: 100%;">
@@ -43,13 +43,6 @@
                     @endif
                 @endforeach
             </select>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-            <label>Contato do Morador:</label>
-            <input type="text" name="contato_dono" id="contato_dono" class="form-control mascara-celular"
-                placeholder="Contato do Morador" value="{{ $anuncio->contato_dono ?? old('contato_dono') }}">
         </div>
     </div>
 </div>

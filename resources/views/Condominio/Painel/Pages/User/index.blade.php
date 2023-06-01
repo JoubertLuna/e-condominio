@@ -21,6 +21,8 @@
                         <th class="esc">Unidade</th>
                         <th class="esc">E-mail</th>
                         <th class="esc">Tipo Morador</th>
+                        <th class="esc">Cadastrado em:</th>
+                        <th class="esc">Última Atualização:</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -40,11 +42,13 @@
                             <td class="esc"> {{ $user->unidade->nome }}</td>
                             <td class="esc">{{ $user->email }}</td>
                             <td class="esc">{{ $user->tipo_morador === 'P' ? 'Proprietário' : 'Inquilino' }}</td>
+                            <td class="esc">{{ date('d/m/Y', strtotime($user->created_at)) }}</td>
+                            <td class="esc">{{ $user->updated_at->diffForHumans() }}</td>
                             <td>
-                                <a href="{{ route('user.show', $user->id) }}" title="Ver Usuário"><i
+                                <a href="{{ route('user.show', $user->url) }}" title="Ver Usuário"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('user.edit', $user->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('user.edit', $user->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

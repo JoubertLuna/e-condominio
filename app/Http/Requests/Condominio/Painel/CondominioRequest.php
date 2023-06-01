@@ -21,11 +21,11 @@ class CondominioRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->segment(2);
+        $url = $this->segment(2);
 
         return [
-            'nome' => "required|min:3|max:255|unique:condominios,nome,{$id},id",
-            'email' => "required|string|email|max:255|unique:condominios,email,{$id},id",
+            'nome' => "required|min:3|max:255|unique:condominios,nome,{$url},url",
+            'email' => "required|string|email|max:255|unique:condominios,email,{$url},url",
             'cep' => 'nullable|min:9|max:10|',
             'logradouro' => 'nullable|max:200|',
             'numero' => 'nullable|numeric|',

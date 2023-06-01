@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('url')->unique();
             $table->string('surname')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->string('rg', 20)->nullable();
             $table->string('fone', 20)->nullable();
             $table->string('celular', 20)->nullable();
-            $table->date('data_cadastro')->default('2014/10/11');
             $table->string('tipo_morador', 1)->default('P'); //P = Proprietário - I = Inquilino - - F = Funcionário
             $table->string('image')->default('default.jpg');
             $table->foreignId('condominio_id')->constrained()->onDelete('cascade');

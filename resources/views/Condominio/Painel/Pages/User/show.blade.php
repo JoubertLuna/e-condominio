@@ -32,7 +32,10 @@
                             <strong>Apelido: </strong> {{ $user->surname }}
                         </li>
                         <li>
-                            <strong>Data de Cadastro: </strong> {{ $user->data_cadastro }}
+                            <strong>Data de Cadastro: </strong> {{ date('d/m/Y', strtotime($user->created_at)) }}
+                        </li>
+                        <li>
+                            <strong>Última Atualização: </strong> {{ $user->updated_at->diffForHumans() }}
                         </li>
                     </ul>
                 </div>
@@ -104,7 +107,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                            <form action="{{ route('user.destroy', $user->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" title="Deletar Usuário - {{ $user->name }}"

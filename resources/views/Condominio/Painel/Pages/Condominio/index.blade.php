@@ -4,7 +4,7 @@
 
 @section('content_header')
     @foreach ($condominios as $condominio)
-        <a href="{{ route('condominio.edit', $condominio->id) }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i>
+        <a href="{{ route('condominio.edit', $condominio->url) }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i>
             Editar Condomínio</a>
     @endforeach
 @stop
@@ -49,7 +49,7 @@
                             <td class="esc">{{ $condominio->bairro }}</td>
                             <td class="esc">{{ $condominio->numero }}</td>
                             <td>
-                                <a href="{{ route('condominio.show', $condominio->id) }}" title="Ver Comdomínio"><i
+                                <a href="{{ route('condominio.show', $condominio->url) }}" title="Ver Comdomínio"><i
                                         class="fas fa-list text-dark"></i></a>
                             </td>
                         </tr>

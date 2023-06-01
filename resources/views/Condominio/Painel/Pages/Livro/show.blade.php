@@ -29,7 +29,7 @@
                             <strong>Morador: </strong> {{ $livro->user->name }}
                         </li>
                         <li>
-                            <strong>Contato Morador: </strong> {{ $livro->contato }}
+                            <strong>Contato Morador: </strong> {{ $livro->user->celular }}
                         </li>
                     </ul>
                 </div>

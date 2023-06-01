@@ -9,7 +9,7 @@ class Bloco extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'condominio_id'];
+    protected $fillable = ['nome', 'url', 'condominio_id'];
 
     # Relacionamento
     public function condominio()

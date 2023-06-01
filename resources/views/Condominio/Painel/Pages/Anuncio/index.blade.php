@@ -28,7 +28,7 @@
                             <td>{{ $anuncio->titulo }}</td>
                             <td class="esc">{{ date('d/m/Y', strtotime($anuncio->data)) }}</td>
                             <td class="esc">{{ $anuncio->user->name }}</td>
-                            <td class="esc">{{ $anuncio->contato }}</td>
+                            <td class="esc">{{ $anuncio->user->celular }}</td>
                             <td>
                                 <a href="{{ route('anuncio.show', $anuncio->id) }}" title="Ver Anúncio"><i
                                         class="fas fa-list text-dark"></i></a>

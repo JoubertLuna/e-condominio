@@ -41,7 +41,7 @@
                             <strong>Dono do Pet: </strong> {{ $pet->user->name }}
                         </li>
                         <li>
-                            <strong>Contato do Dono: </strong> {{ $pet->contato_dono }}
+                            <strong>Contato do Dono: </strong> {{ $pet->user->celular }}
                         </li>
                     </ul>
                 </div>

@@ -28,9 +28,9 @@ class CondominioController extends Controller
     /**
      * show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$condominio = $this->condominio->find($id)) {
+        if (!$condominio = $this->condominio->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -40,9 +40,9 @@ class CondominioController extends Controller
     /**
      * edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$condominio = $this->condominio->find($id)) {
+        if (!$condominio = $this->condominio->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -52,9 +52,9 @@ class CondominioController extends Controller
     /**
      * update
      */
-    public function update(CondominioRequest $request, $id)
+    public function update(CondominioRequest $request, $url)
     {
-        if (!$condominio = $this->condominio->find($id)) {
+        if (!$condominio = $this->condominio->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -86,9 +86,9 @@ class CondominioController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$condominio = $this->condominio->find($id)) {
+        if (!$condominio = $this->condominio->where('url', $url)->first()) {
             return redirect()->back();
         }
 

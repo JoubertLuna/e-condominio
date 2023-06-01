@@ -54,9 +54,9 @@ class UnidadeController extends Controller
     /**
      * show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$unidade = $this->unidade->with('bloco')->find($id)) {
+        if (!$unidade = $this->unidade->with('bloco')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -67,9 +67,9 @@ class UnidadeController extends Controller
     /**
      * edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$unidade = $this->unidade->with('bloco')->find($id)) {
+        if (!$unidade = $this->unidade->with('bloco')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -80,9 +80,9 @@ class UnidadeController extends Controller
     /**
      * update
      */
-    public function update(UnidadeRequest $request, $id)
+    public function update(UnidadeRequest $request, $url)
     {
-        if (!$unidade = $this->unidade->with('bloco')->find($id)) {
+        if (!$unidade = $this->unidade->with('bloco')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -96,9 +96,9 @@ class UnidadeController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$unidade = $this->unidade->with('bloco')->find($id)) {
+        if (!$unidade = $this->unidade->with('bloco')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

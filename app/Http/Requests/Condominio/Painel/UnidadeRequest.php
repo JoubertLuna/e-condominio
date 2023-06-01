@@ -21,10 +21,10 @@ class UnidadeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->segment(2);
+        $url = $this->segment(2);
 
         return [
-            'nome' => "required|min:3|max:255|unique:unidades,nome,{$id},id",
+            'nome' => "required|min:3|max:255|unique:unidades,nome,{$url},url",
             'bloco_id' => 'required|exists:blocos,id',
         ];
     }

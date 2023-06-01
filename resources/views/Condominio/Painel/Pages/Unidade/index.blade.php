@@ -26,10 +26,10 @@
                             <td>{{ $unidade->nome }}</td>
                             <td class="esc"><b><i>{{ $unidade->bloco->nome }}</i></b></td>
                             <td>
-                                <a href="{{ route('unidade.show', $unidade->id) }}" title="Ver Unidade"><i
+                                <a href="{{ route('unidade.show', $unidade->url) }}" title="Ver Unidade"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('unidade.edit', $unidade->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('unidade.edit', $unidade->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

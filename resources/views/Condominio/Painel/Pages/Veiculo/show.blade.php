@@ -41,7 +41,7 @@
                             <strong>Dono do Veículo: </strong> {{ $veiculo->user->name }}
                         </li>
                         <li>
-                            <strong>Contato do Dono: </strong> {{ $veiculo->contato_dono }}
+                            <strong>Contato do Dono: </strong> {{ $veiculo->user->celular }}
                         </li>
                         <li>
                             <strong>Unidade do dono/Veículo: </strong> {{ $veiculo->unidade->nome }}

@@ -26,10 +26,10 @@
                             <td>{{ $bloco->nome }}</td>
                             <td class="esc">{{ $bloco->condominio->nome }}</td>
                             <td>
-                                <a href="{{ route('bloco.show', $bloco->id) }}" title="Ver Bloco"><i
+                                <a href="{{ route('bloco.show', $bloco->url) }}" title="Ver Bloco"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('bloco.edit', $bloco->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('bloco.edit', $bloco->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

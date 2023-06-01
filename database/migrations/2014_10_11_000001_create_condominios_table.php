@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('condominios', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('nome')->unique();
+            $table->string('url')->unique();
             $table->string('email')->unique();
             $table->string('cnpj', 20)->nullable();
             $table->string('fone', 20)->nullable();
