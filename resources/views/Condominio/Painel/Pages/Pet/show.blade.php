@@ -63,7 +63,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('pet.destroy', $pet->id) }}" method="POST">
+                            <form action="{{ route('pet.destroy', $pet->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" title="Deletar Pet - {{ $pet->nome }}"

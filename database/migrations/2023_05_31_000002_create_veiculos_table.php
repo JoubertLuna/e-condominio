@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('tipo_veiculo', 1)->default('C'); //C = Carro - M = Moto
             $table->string('marca')->nullable();
             $table->string('modelo')->nullable();
-            $table->string('placa');
+            $table->string('placa')->unique();
+            $table->string('url')->unique();
             $table->foreignId('unidade_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

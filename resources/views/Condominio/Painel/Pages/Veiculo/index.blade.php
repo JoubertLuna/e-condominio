@@ -36,10 +36,10 @@
                             <td>{{ $veiculo->placa }}</td>
                             <td>{{ $veiculo->user->celular }}</td>
                             <td>
-                                <a href="{{ route('veiculo.show', $veiculo->id) }}" title="Ver Veículo"><i
+                                <a href="{{ route('veiculo.show', $veiculo->url) }}" title="Ver Veículo"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('veiculo.edit', $veiculo->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('veiculo.edit', $veiculo->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

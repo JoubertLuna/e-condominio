@@ -34,10 +34,10 @@
                             <td class="esc">{{ $pet->user->name }}</td>
                             <td class="esc">{{ $pet->user->celular }}</td>
                             <td>
-                                <a href="{{ route('pet.show', $pet->id) }}" title="Ver Pet"><i
+                                <a href="{{ route('pet.show', $pet->url) }}" title="Ver Pet"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('pet.edit', $pet->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('pet.edit', $pet->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

@@ -58,9 +58,9 @@ class VeiculoController extends Controller
     /**
      * Show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$veiculo = $this->veiculo->with('user', 'unidade')->find($id)) {
+        if (!$veiculo = $this->veiculo->with('user', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -72,9 +72,9 @@ class VeiculoController extends Controller
     /**
      * Edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$veiculo = $this->veiculo->with('user', 'unidade')->find($id)) {
+        if (!$veiculo = $this->veiculo->with('user', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -86,9 +86,9 @@ class VeiculoController extends Controller
     /**
      * Update
      */
-    public function update(VeiculoRequest $request, $id)
+    public function update(VeiculoRequest $request, $url)
     {
-        if (!$veiculo = $this->veiculo->with('user', 'unidade')->find($id)) {
+        if (!$veiculo = $this->veiculo->with('user', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -102,9 +102,9 @@ class VeiculoController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$veiculo = $this->veiculo->with('user', 'unidade')->find($id)) {
+        if (!$veiculo = $this->veiculo->with('user', 'unidade')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

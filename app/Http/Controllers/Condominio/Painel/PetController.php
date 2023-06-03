@@ -54,9 +54,9 @@ class PetController extends Controller
     /**
      * Show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$pet = $this->pet->with('user')->find($id)) {
+        if (!$pet = $this->pet->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -67,9 +67,9 @@ class PetController extends Controller
     /**
      * Edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$pet = $this->pet->with('user')->find($id)) {
+        if (!$pet = $this->pet->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -80,9 +80,9 @@ class PetController extends Controller
     /**
      * Update
      */
-    public function update(PetRequest $request, $id)
+    public function update(PetRequest $request, $url)
     {
-        if (!$pet = $this->pet->with('user')->find($id)) {
+        if (!$pet = $this->pet->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -96,9 +96,9 @@ class PetController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$pet = $this->pet->with('user')->find($id)) {
+        if (!$pet = $this->pet->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

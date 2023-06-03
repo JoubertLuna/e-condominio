@@ -22,14 +22,14 @@ class VeiculoRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->segment(2);
+        $url = $this->segment(2);
 
         return [
             'user_id' => 'required|exists:users,id',
             'tipo_veiculo' => 'required', Rule::in(['C', 'M']),
             'marca' => "nullable|min:3|max:255|string",
             'modelo' => 'nullable|min:3|max:255|string',
-            'placa' => "required|min:3|max:255|formato_placa_de_veiculo|unique:veiculos,placa,{$id},id",
+            'placa' => "required|min:3|max:255|formato_placa_de_veiculo|unique:veiculos,placa,{$url},url",
             'unidade_id' => 'required|exists:unidades,id',
         ];
     }

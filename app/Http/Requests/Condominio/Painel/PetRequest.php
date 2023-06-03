@@ -22,10 +22,10 @@ class PetRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->segment(2);
+        $url = $this->segment(2);
 
         return [
-            'nome' => "required|min:3|max:255|unique:pets,nome,{$id},id",
+            'nome' => "required|min:3|max:255|unique:pets,nome,{$url},url",
             'especie' => 'nullable|min:3|max:255|string',
             'raca' => 'nullable|min:3|max:255|string',
             'sexo' => 'required', Rule::in(['F', 'M']),

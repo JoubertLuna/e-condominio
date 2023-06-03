@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('nome')->unique();
+            $table->string('url')->unique();
             $table->string('especie')->nullable();
             $table->string('sexo', 1)->default('F'); //F = Feminino - M = Masculino
             $table->string('raca')->nullable();
