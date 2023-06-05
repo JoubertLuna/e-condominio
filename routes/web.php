@@ -13,14 +13,17 @@ use App\Http\Controllers\Condominio\Painel\{
     CondominioController,
     ContaPagarController,
     ContaReceberController,
+    EstadoController,
     FornecedorController,
     HomeController,
     LivroController,
+    PatrimonioController,
     PetController,
     ReservaController,
     UnidadeController,
     UserController,
-    VeiculoController
+    VeiculoController,
+    VisitanteController
 };
 
 use Illuminate\Support\Facades\Route;
@@ -107,20 +110,21 @@ Route::middleware('auth', 'verified')->group(function () {
     #Route Receber
     // Financeiro
 
+    // Configurações
+    #Route Patrimonio
+    Route::resource('patrimonio', PatrimonioController::class);
+    #Route Patrimonio
 
+    #Route Estado
+    Route::resource('estado', EstadoController::class);
+    #Route Estado
+    // Configurações
 
-    // #Route Patrimonio
-    // Route::resource('patrimonio', PatrimonioController::class);
-    // #Route Patrimonio
-
-    // #Route Estado
-    // Route::resource('estado', EstadoController::class);
-    // #Route Estado
-
-    // #Route Visitante
-    // Route::resource('visitante', VisitanteController::class);
-    // #Route Visitante
-
+    //Visitante
+    #Route Visitante
+    Route::resource('visitante', VisitanteController::class);
+    #Route Visitante
+    //Visitante
 });
 
 Auth::routes(['register' => false, 'verify' => true]);

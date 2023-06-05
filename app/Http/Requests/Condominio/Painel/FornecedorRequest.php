@@ -27,8 +27,8 @@ class FornecedorRequest extends FormRequest
         return [
             'razao_social' => "required|min:3|max:255|unique:fornecedors,razao_social,{$url},url",
             'nome_fantasia' => 'nullable|min:3|max:255|',
-            'cpf' => 'nullable|min:14|max:14|cpf|formato_cpf|',
-            'cnpj' => 'nullable|min:18|max:18|cnpj|formato_cnpj|',
+            'cpf' => "nullable|min:14|max:14|cpf|formato_cpf|unique:fornecedors,cpf,{$url},url",
+            'cnpj' => "nullable|min:18|max:18|cnpj|formato_cnpj|unique:fornecedors,cnpj,{$url},url",
             'data_cadastro' => 'required|min:10|max:10|',
             'ativo' => 'required', Rule::in(['S', 'N']),
             'fone' => 'nullable|min:14|max:14|celular_com_ddd|',
@@ -41,7 +41,7 @@ class FornecedorRequest extends FormRequest
             'cidade' => 'nullable|max:200|',
             'complemento' => 'nullable|max:200|',
             'bairro' => 'nullable|max:200|',
-            'rg' => 'nullable|min:9|max:10|',
+            'rg' => "nullable|min:9|max:10|unique:fornecedors,rg,{$url},url",
         ];
     }
 }

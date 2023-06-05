@@ -416,7 +416,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Visitante',
-                    #'route'  => 'visitante.index',
+                    'route'  => 'visitante.index',
                     'icon'    => 'fas fa-user-plus',
                     // 'can'    => 'visitante',
                 ],
@@ -430,13 +430,13 @@ return [
             'submenu' => [
                 [
                     'text' => 'Patrimônio',
-                    #'route'  => 'patrimonio.index',
+                    'route'  => 'patrimonio.index',
                     'icon'    => 'fas fa-shopping-basket',
                     // 'can'    => 'patrimonio',
                 ],
                 [
                     'text' => 'Cadastro de Estados',
-                    #'route'  => 'estado.index',
+                    'route'  => 'estado.index',
                     'icon' => 'fas fa-globe',
                     // 'can'    => 'estado',
                 ],

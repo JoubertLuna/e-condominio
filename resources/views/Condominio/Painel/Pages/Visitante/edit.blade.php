@@ -11,7 +11,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('visitante.update', $visitante->id) }}" method="POST" class="form"
+            <form action="{{ route('visitante.update', $visitante->url) }}" method="POST" class="form"
                 enctype="multipart/form-data">
                 @method('PUT')
                 @include('Condominio.Painel.Pages.Visitante._partials.form')

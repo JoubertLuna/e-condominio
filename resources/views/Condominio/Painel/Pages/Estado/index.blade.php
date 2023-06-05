@@ -26,10 +26,10 @@
                             <td>{{ $estado->nome_estado }}</td>
                             <td class="esc">{{ $estado->iniciais }}</td>
                             <td>
-                                <a href="{{ route('estado.show', $estado->id) }}" title="Ver Estado Cadastrado"><i
+                                <a href="{{ route('estado.show', $estado->url) }}" title="Ver Estado Cadastrado"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('estado.edit', $estado->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('estado.edit', $estado->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

@@ -33,7 +33,7 @@ class CondominioRequest extends FormRequest
             'cidade' => 'nullable|max:200|',
             'complemento' => 'nullable|max:200|',
             'bairro' => 'nullable|max:200|',
-            'cnpj' => 'required|min:18|max:18|cnpj|formato_cnpj|',
+            'cnpj' => "required|min:18|max:18|cnpj|formato_cnpj|unique:condominios,cnpj,{$url},url",
             'fone' => 'nullable||min:14|max:14|celular_com_ddd|',
             'image' => 'nullable|max:2048|',
             'facebook' => 'nullable|min:10|max:255|',

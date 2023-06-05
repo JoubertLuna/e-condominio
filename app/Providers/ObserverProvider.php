@@ -13,13 +13,16 @@ use App\Models\Condominio\Painel\{
     Condominio,
     ContaPagar,
     ContaReceber,
+    Estado,
     Fornecedor,
     Livro,
+    Patrimonio,
     Pet,
     Reserva,
     Unidade,
     User,
     Veiculo,
+    Visitante,
 };
 
 use App\Observers\Condominio\Painel\{
@@ -33,13 +36,16 @@ use App\Observers\Condominio\Painel\{
     CondominioObserver,
     ContaPagarObserver,
     ContaReceberObserver,
+    EstadoObserver,
     FornecedorObserver,
     LivroObserver,
+    PatrimonioObserver,
     PetObserver,
     ReservaObserver,
     UnidadeObserver,
     UserObserver,
-    VeiculoObserver
+    VeiculoObserver,
+    VisitanteObserver
 };
 
 use Illuminate\Support\ServiceProvider;
@@ -81,5 +87,14 @@ class ObserverProvider extends ServiceProvider
         ContaPagar::observe(ContaPagarObserver::class);
         ContaReceber::observe(ContaReceberObserver::class);
         //Financeiro
+
+        //Configurações
+        Patrimonio::observe(PatrimonioObserver::class);
+        Estado::observe(EstadoObserver::class);
+        //Configurações
+
+        //Visitante
+        Visitante::observe(VisitanteObserver::class);
+        //Visitante
     }
 }

@@ -3,8 +3,7 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('visitante.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Conta a
-        Pagar</a>
+    <a href="{{ route('visitante.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Visitante</a>
 @stop
 
 @section('content')
@@ -27,21 +26,29 @@
                 </thead>
                 <tbody>
                     @foreach ($visitantes as $visitante)
-                            <tr>
-                                <td>{{ $visitante->nome }}</td>
-                                <td class="esc">{{ $visitante->bloco->nome }}</td>
-                                <td class="esc">{{ $visitante->unidade->nome }}</td>
-                                <td class="esc">{{ $visitante->user->name }}</td>
-                                <td class="esc">{{ $visitante->hora_entrada }}</td>
-                                <td class="esc">{{ $visitante->hora_saida }}</td>
-                                <td>
-                                    <a href="{{ route('visitante.show', $visitante->id) }}" title="Ver Visitante"><i
-                                            class="fas fa-list text-dark"></i></a>
+                        <tr>
+                            <td>
+                                @if (@$visitante->image)
+                                    <img src="{{ asset('storage/Visitante/' . @$visitante->image) }}" width="40px"
+                                        alt="{{ @$visitante->nome }}" id="imgup">
+                                @else
+                                    <img src="{{ asset('storage/Visitante/default.jpg') }}" width="40px" id="imgup">
+                                @endif
+                                - {{ $visitante->nome }}
+                            </td>
+                            <td class="esc">{{ $visitante->bloco->nome }}</td>
+                            <td class="esc">{{ $visitante->unidade->nome }}</td>
+                            <td class="esc">{{ $visitante->user->name }}</td>
+                            <td class="esc">{{ $visitante->hora_entrada }}</td>
+                            <td class="esc">{{ $visitante->hora_saida }}</td>
+                            <td>
+                                <a href="{{ route('visitante.show', $visitante->url) }}" title="Ver Visitante"><i
+                                        class="fas fa-list text-dark"></i></a>
 
-                                    <a href="{{ route('visitante.edit', $visitante->id) }}" title="Editar Dados"><i
-                                            class="fa fa-edit text-primary"></i></a>
-                                </td>
-                            </tr>
+                                <a href="{{ route('visitante.edit', $visitante->url) }}" title="Editar Dados"><i
+                                        class="fa fa-edit text-primary"></i></a>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
