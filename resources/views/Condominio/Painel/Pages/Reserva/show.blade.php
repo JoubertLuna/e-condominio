@@ -29,7 +29,7 @@
                             <strong>Morador: </strong> {{ $reserva->user->name }}
                         </li>
                         <li>
-                            <strong>Contato Morador: </strong> {{ $reserva->contato_dono }}
+                            <strong>Contato Morador: </strong> {{ $reserva->user->celular }}
                         </li>
                         <li>
                             <strong>Aprovado: </strong> {{ $reserva->aprovado === 'N' ? 'Não' : 'Sim' }}
@@ -64,7 +64,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('reserva.destroy', $reserva->id) }}" method="POST">
+                            <form action="{{ route('reserva.destroy', $reserva->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"

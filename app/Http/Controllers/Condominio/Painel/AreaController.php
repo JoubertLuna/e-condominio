@@ -47,9 +47,9 @@ class AreaController extends Controller
     /**
      * show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$area = $this->area->find($id)) {
+        if (!$area = $this->area->where('url', $url)->first()) {
             return redirect()->back();
         }
         return view('Condominio.Painel.Pages.Area.show', compact('area'));
@@ -58,9 +58,9 @@ class AreaController extends Controller
     /**
      * edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$area = $this->area->find($id)) {
+        if (!$area = $this->area->where('url', $url)->first()) {
             return redirect()->back();
         }
         return view('Condominio.Painel.Pages.Area.edit', compact('area'));
@@ -69,9 +69,9 @@ class AreaController extends Controller
     /**
      * update
      */
-    public function update(AreaRequest $request, $id)
+    public function update(AreaRequest $request, $url)
     {
-        if (!$area = $this->area->find($id)) {
+        if (!$area = $this->area->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -85,10 +85,10 @@ class AreaController extends Controller
     /**
      * excluir
      */
-    public function destroy($id)
+    public function destroy($url)
     {
 
-        if (!$area = $this->area->find($id)) {
+        if (!$area = $this->area->where('url', $url)->first()) {
             return redirect()->back();
         }
 

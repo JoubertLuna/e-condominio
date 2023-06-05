@@ -9,7 +9,7 @@ class Assembleia extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titulo', 'ordem_dia', 'data', 'hora', 'area_id'];
+    protected $fillable = ['titulo', 'url' , 'ordem_dia', 'data', 'hora', 'area_id'];
 
     public function area()
     {

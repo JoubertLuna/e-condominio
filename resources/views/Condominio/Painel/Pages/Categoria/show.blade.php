@@ -43,7 +43,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('categoria.destroy', $categoria->id) }}" method="POST">
+                            <form action="{{ route('categoria.destroy', $categoria->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" title="Deletar Categoria - {{ $categoria->nome }}"

@@ -21,10 +21,10 @@ class LivroRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->segment(2);
+        $url = $this->segment(2);
 
         return [
-            'titulo' => "required|min:3|max:255|string|unique:livros,titulo,{$id},id",
+            'titulo' => "required|min:3|max:255|string|unique:livros,titulo,{$url},url",
             'descricao' => 'required|min:3|max:5000|',
             'data' => 'required|min:10|max:10|',
             'user_id' => 'required|exists:users,id',

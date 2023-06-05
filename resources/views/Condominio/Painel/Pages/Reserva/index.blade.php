@@ -30,13 +30,13 @@
                             <td>{{ $reserva->area->nome }}</td>
                             <td class="esc">{{ date('d/m/Y', strtotime($reserva->data)) }}</td>
                             <td class="esc">{{ $reserva->user->name }}</td>
-                            <td class="esc">{{ $reserva->contato_dono }}</td>
+                            <td class="esc">{{ $reserva->user->celular }}</td>
                             <td class="esc">{{ $reserva->aprovado === 'N' ? 'Não' : 'Sim' }}</td>
                             <td>
-                                <a href="{{ route('reserva.show', $reserva->id) }}"
+                                <a href="{{ route('reserva.show', $reserva->url) }}"
                                     title="Ver Reserva de Ambiente"><i class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('reserva.edit', $reserva->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('reserva.edit', $reserva->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

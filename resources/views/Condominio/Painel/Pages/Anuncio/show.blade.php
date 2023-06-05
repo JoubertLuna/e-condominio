@@ -61,7 +61,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('anuncio.destroy', $anuncio->id) }}" method="POST">
+                            <form action="{{ route('anuncio.destroy', $anuncio->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" title="Deletar Anúncio - {{ $anuncio->titulo }}"

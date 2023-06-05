@@ -106,7 +106,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('fornecedor.destroy', $fornecedor->id) }}" method="POST">
+                            <form action="{{ route('fornecedor.destroy', $fornecedor->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" title="Deletar Fornecedor - {{ $fornecedor->razao_social }}"

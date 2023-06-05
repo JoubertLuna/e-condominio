@@ -358,7 +358,7 @@ return [
                 ],
                 [
                     'text' => 'Reservas',
-                    #'route'  => 'reserva.index',
+                    'route'  => 'reserva.index',
                     'icon'    => 'fas fa-pen-square',
                     // 'can'    => 'reserva',
                 ],
@@ -371,25 +371,25 @@ return [
             'submenu' => [
                 [
                     'text' => 'Banco',
-                    #'route'  => 'banco.index',
+                    'route'  => 'banco.index',
                     'icon'    => 'fas fa-university',
                     // 'can'    => 'banco',
                 ],
                 [
                     'text' => 'Categoria',
-                    #'route'  => 'categoria.index',
+                    'route'  => 'categoria.index',
                     'icon'    => 'fas fa-list',
                     // 'can'    => 'categoria',
                 ],
                 [
                     'text' => 'Conta Bancária',
-                    #'route'  => 'bancaria.index',
+                    'route'  => 'bancaria.index',
                     'icon'    => 'fas fa-money-check-alt',
                     // 'can'    => 'bancaria',
                 ],
                 [
                     'text' => 'Fornecedor',
-                    #'route'  => 'fornecedor.index',
+                    'route'  => 'fornecedor.index',
                     'icon'    => 'fas fa-id-card-alt',
                     // 'can'    => 'fornecedor',
                 ],

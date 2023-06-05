@@ -4,6 +4,15 @@
     <h4><b><i class="fas fa-pen-square"></i> Cadastro de Reserva de Ambiente</b></h4>
     <hr>
     <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Título da Reserva:</label>
+                <input type="text" name="titulo" id="titulo" class="form-control"
+                    placeholder="Título da Reserva" value="{{ $reserva->titulo ?? old('titulo') }}">
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Data da Reserva:</label>
@@ -36,7 +45,7 @@
 <hr>
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
             <label>Área da Reserva:</label>
             <select class="form-control" name="area_id" id="area_id" style="width: 100%;">
@@ -51,7 +60,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="form-group">
             <label>Morador:</label>
             <select class="form-control" name="user_id" id="user_id" style="width: 100%;">
@@ -63,13 +72,6 @@
                     @endif
                 @endforeach
             </select>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group">
-            <label>Contato do Morador:</label>
-            <input type="text" name="contato_dono" id="contato_dono" class="form-control mascara-celular"
-                placeholder="Contato do Morador" value="{{ $reserva->contato_dono ?? old('contato_dono') }}">
         </div>
     </div>
 </div>

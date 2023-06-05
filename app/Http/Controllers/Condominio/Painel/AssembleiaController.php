@@ -53,9 +53,9 @@ class AssembleiaController extends Controller
     /**
      * Show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$assembleia = $this->assembleia->with('area')->find($id)) {
+        if (!$assembleia = $this->assembleia->with('area')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -66,9 +66,9 @@ class AssembleiaController extends Controller
     /**
      * Edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$assembleia = $this->assembleia->with('area')->find($id)) {
+        if (!$assembleia = $this->assembleia->with('area')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -79,9 +79,9 @@ class AssembleiaController extends Controller
     /**
      * Update
      */
-    public function update(AssembleiaRequest $request, $id)
+    public function update(AssembleiaRequest $request, $url)
     {
-        if (!$assembleia = $this->assembleia->with('area')->find($id)) {
+        if (!$assembleia = $this->assembleia->with('area')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -95,9 +95,9 @@ class AssembleiaController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$assembleia = $this->assembleia->with('area')->find($id)) {
+        if (!$assembleia = $this->assembleia->with('area')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

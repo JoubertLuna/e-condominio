@@ -30,10 +30,10 @@
                             <td class="esc">{{ $assembleia->hora }}</td>
                             <td class="esc">{{ $assembleia->area->nome }}</td>
                             <td>
-                                <a href="{{ route('assembleia.show', $assembleia->id) }}" title="Ver Assembleia"><i
+                                <a href="{{ route('assembleia.show', $assembleia->url) }}" title="Ver Assembleia"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('assembleia.edit', $assembleia->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('assembleia.edit', $assembleia->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

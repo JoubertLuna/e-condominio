@@ -11,7 +11,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('assembleia.update', $assembleia->id) }}" method="POST" class="form">
+            <form action="{{ route('assembleia.update', $assembleia->url) }}" method="POST" class="form">
                 @method('PUT')
                 @include('Condominio.Painel.Pages.Assembleia._partials.form')
             </form>

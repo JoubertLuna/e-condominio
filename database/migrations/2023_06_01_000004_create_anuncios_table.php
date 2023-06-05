@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('anuncios', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
+            $table->string('titulo')->unique();
+            $table->string('url')->unique();
             $table->date('data')->default('2014/10/11');
             $table->text('descricao');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');

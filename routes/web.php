@@ -6,11 +6,16 @@ use App\Http\Controllers\Condominio\Painel\{
     AnuncioController,
     AreaController,
     AssembleiaController,
+    BancariaController,
+    BancoController,
     BlocoController,
+    CategoriaController,
     CondominioController,
+    FornecedorController,
     HomeController,
     LivroController,
     PetController,
+    ReservaController,
     UnidadeController,
     UserController,
     VeiculoController
@@ -27,6 +32,8 @@ Route::middleware('auth', 'verified')->group(function () {
     #Route Home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     #Route Home
+
+    // Condominio
 
     #Route Condominio
     Route::resource('condominio', CondominioController::class);
@@ -60,14 +67,6 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::resource('assembleia', AssembleiaController::class);
     #Route Assembleia
 
-    // #Route Banco
-    // Route::resource('banco', BancoController::class);
-    // #Route Banco
-
-    // #Route Categoria
-    // Route::resource('categoria', CategoriaController::class);
-    // #Route Categoria
-
     #Route Livro
     Route::resource('livro', LivroController::class);
     #Route Livro
@@ -76,17 +75,33 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::resource('anuncio', AnuncioController::class);
     #Route Anuncio
 
-    // #Route Reserva
-    // Route::resource('reserva', ReservaController::class);
-    // #Route Reserva
+    #Route Reserva
+    Route::resource('reserva', ReservaController::class);
+    #Route Reserva
 
-    // #Route Fornecedor
-    // Route::resource('fornecedor', FornecedorController::class);
-    // #Route Fornecedor
+    // Condominio
 
-    // #Route Bancaria
-    // Route::resource('bancaria', BancariaController::class);
-    // #Route Bancaria
+    // Financeiro
+
+    #Route Banco
+    Route::resource('banco', BancoController::class);
+    #Route Banco
+
+    #Route Categoria
+    Route::resource('categoria', CategoriaController::class);
+    #Route Categoria
+
+    #Route Bancaria
+    Route::resource('bancaria', BancariaController::class);
+    #Route Bancaria
+
+    #Route Fornecedor
+    Route::resource('fornecedor', FornecedorController::class);
+    #Route Fornecedor
+
+    // Financeiro
+
+
 
     // #Route Patrimonio
     // Route::resource('patrimonio', PatrimonioController::class);

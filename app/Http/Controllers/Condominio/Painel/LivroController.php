@@ -53,9 +53,9 @@ class LivroController extends Controller
     /**
      * Show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$livro = $this->livro->with('user')->find($id)) {
+        if (!$livro = $this->livro->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -66,9 +66,9 @@ class LivroController extends Controller
     /**
      * Edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$livro = $this->livro->with('user')->find($id)) {
+        if (!$livro = $this->livro->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -79,9 +79,9 @@ class LivroController extends Controller
     /**
      * Update
      */
-    public function update(LivroRequest $request, $id)
+    public function update(LivroRequest $request, $url)
     {
-        if (!$livro = $this->livro->with('user')->find($id)) {
+        if (!$livro = $this->livro->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -95,9 +95,9 @@ class LivroController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$livro = $this->livro->with('user')->find($id)) {
+        if (!$livro = $this->livro->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

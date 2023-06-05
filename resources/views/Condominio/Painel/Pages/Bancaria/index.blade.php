@@ -37,10 +37,10 @@
                             <td class="esc">{{ $bancaria->numero }} - {{ $bancaria->digito }}</td>
                             <td class="esc"> {{ $bancaria->condominio->nome }}</td>
                             <td>
-                                <a href="{{ route('bancaria.show', $bancaria->id) }}" title="Ver Conta Bancária"><i
+                                <a href="{{ route('bancaria.show', $bancaria->url) }}" title="Ver Conta Bancária"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('bancaria.edit', $bancaria->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('bancaria.edit', $bancaria->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

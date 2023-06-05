@@ -9,7 +9,7 @@ class Area extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome'];
+    protected $fillable = ['nome', 'url'];
 
     public function assembleias()
     {

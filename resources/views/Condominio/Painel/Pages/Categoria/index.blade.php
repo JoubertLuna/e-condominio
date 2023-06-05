@@ -24,10 +24,10 @@
                         <tr>
                             <td>{{ $categoria->nome }}</td>
                             <td>
-                                <a href="{{ route('categoria.show', $categoria->id) }}" title="Ver Categoria"><i
+                                <a href="{{ route('categoria.show', $categoria->url) }}" title="Ver Categoria"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('categoria.edit', $categoria->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('categoria.edit', $categoria->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

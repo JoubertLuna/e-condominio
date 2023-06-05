@@ -21,10 +21,10 @@ class AreaRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->segment(2);
+        $url = $this->segment(2);
 
         return [
-            'nome' => "required|min:3|max:255|unique:areas,nome,{$id},id",
+            'nome' => "required|min:3|max:255|unique:areas,nome,{$url},url",
         ];
     }
 }

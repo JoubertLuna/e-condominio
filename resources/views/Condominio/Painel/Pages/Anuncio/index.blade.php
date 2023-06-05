@@ -30,10 +30,10 @@
                             <td class="esc">{{ $anuncio->user->name }}</td>
                             <td class="esc">{{ $anuncio->user->celular }}</td>
                             <td>
-                                <a href="{{ route('anuncio.show', $anuncio->id) }}" title="Ver Anúncio"><i
+                                <a href="{{ route('anuncio.show', $anuncio->url) }}" title="Ver Anúncio"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('anuncio.edit', $anuncio->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('anuncio.edit', $anuncio->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

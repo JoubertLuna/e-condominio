@@ -53,9 +53,9 @@ class AnuncioController extends Controller
     /**
      * Show
      */
-    public function show($id)
+    public function show($url)
     {
-        if (!$anuncio = $this->anuncio->with('user')->find($id)) {
+        if (!$anuncio = $this->anuncio->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -66,9 +66,9 @@ class AnuncioController extends Controller
     /**
      * Edit
      */
-    public function edit($id)
+    public function edit($url)
     {
-        if (!$anuncio = $this->anuncio->with('user')->find($id)) {
+        if (!$anuncio = $this->anuncio->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -79,9 +79,9 @@ class AnuncioController extends Controller
     /**
      * Update
      */
-    public function update(AnuncioRequest $request, $id)
+    public function update(AnuncioRequest $request, $url)
     {
-        if (!$anuncio = $this->anuncio->with('user')->find($id)) {
+        if (!$anuncio = $this->anuncio->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -95,9 +95,9 @@ class AnuncioController extends Controller
     /**
      * destroy
      */
-    public function destroy($id)
+    public function destroy($url)
     {
-        if (!$anuncio = $this->anuncio->with('user')->find($id)) {
+        if (!$anuncio = $this->anuncio->with('user')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

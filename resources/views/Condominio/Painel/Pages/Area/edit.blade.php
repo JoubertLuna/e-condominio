@@ -12,7 +12,7 @@
     <div class="card">
 
         <div class="card-body">
-            <form action="{{ route('area.update', $area->id) }}" method="POST" class="form">
+            <form action="{{ route('area.update', $area->url) }}" method="POST" class="form">
                 @method('PUT')
                 @include('Condominio.Painel.Pages.Area._partials.form')
             </form>

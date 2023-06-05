@@ -43,7 +43,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('area.destroy', $area->id) }}" method="POST">
+                            <form action="{{ route('area.destroy', $area->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" title="Deletar Área Comum - {{ $area->nome }}"

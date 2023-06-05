@@ -26,10 +26,10 @@
                             <td>{{ $banco->codigo }}</td>
                             <td>{{ $banco->nome }}</td>
                             <td>
-                                <a href="{{ route('banco.show', $banco->id) }}" title="Ver Banco"><i
+                                <a href="{{ route('banco.show', $banco->url) }}" title="Ver Banco"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('banco.edit', $banco->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('banco.edit', $banco->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

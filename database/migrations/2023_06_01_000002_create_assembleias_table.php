@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('assembleias', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
+            $table->string('titulo')->unique();
+            $table->string('url')->unique();
             $table->text('ordem_dia');
             $table->date('data')->default('2014/10/11');
             $table->time('hora')->default('12:00:00');

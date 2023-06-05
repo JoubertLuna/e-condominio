@@ -21,10 +21,10 @@ class AssembleiaRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->segment(2);
+        $url = $this->segment(2);
 
         return [
-            'titulo' => "required|min:3|max:255|string|unique:assembleias,titulo,{$id},id",
+            'titulo' => "required|min:3|max:255|string|unique:assembleias,titulo,{$url},url",
             'ordem_dia' => 'required|min:3|max:5000|',
             'data' => 'required|min:10|max:10|',
             'hora' => 'required|min:5|max:8|',

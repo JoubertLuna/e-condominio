@@ -11,7 +11,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('reserva.update', $reserva->id) }}" method="POST" class="form">
+            <form action="{{ route('reserva.update', $reserva->url) }}" method="POST" class="form">
                 @method('PUT')
                 @include('Condominio.Painel.Pages.Reserva._partials.form')
             </form>

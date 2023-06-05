@@ -11,7 +11,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('bancaria.update', $bancaria->id) }}" method="POST" class="form">
+            <form action="{{ route('bancaria.update', $bancaria->url) }}" method="POST" class="form">
                 @method('PUT')
                 @include('Condominio.Painel.Pages.Bancaria._partials.form')
             </form>

@@ -11,7 +11,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('livro.update', $livro->id) }}" method="POST" class="form">
+            <form action="{{ route('livro.update', $livro->url) }}" method="POST" class="form">
                 @method('PUT')
                 @include('Condominio.Painel.Pages.Livro._partials.form')
             </form>

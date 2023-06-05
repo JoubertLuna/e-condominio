@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
         $url = $this->segment(2);
 
         return [
-            'name' => 'required|min:3|max:255|string',
+            'name' => "required|min:3|max:255|string|unique:users,email,{$url},url",
             'surname' => 'nullable|min:3|max:255|string',
             'email' => "required|email|max:255|string|unique:users,email,{$url},url",
             'password' => "required|min:8|max:36|confirmed|string|regex:/^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{8,36}$/",

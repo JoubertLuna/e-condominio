@@ -24,10 +24,10 @@
                         <tr>
                             <td>{{ $area->nome }}</td>
                             <td>
-                                <a href="{{ route('area.show', $area->id) }}" title="Ver Área Comum"><i
+                                <a href="{{ route('area.show', $area->url) }}" title="Ver Área Comum"><i
                                         class="fas fa-list text-dark"></i></a>
 
-                                <a href="{{ route('area.edit', $area->id) }}" title="Editar Dados"><i
+                                <a href="{{ route('area.edit', $area->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>
                             </td>
                         </tr>

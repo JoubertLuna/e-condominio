@@ -30,10 +30,10 @@
                                 <td>{{ $fornecedor->fone }}</td>
 
                                 <td>
-                                    <a href="{{ route('fornecedor.show', $fornecedor->id) }}" title="Ver Fornecedor"><i
+                                    <a href="{{ route('fornecedor.show', $fornecedor->url) }}" title="Ver Fornecedor"><i
                                             class="fas fa-list text-dark"></i></a>
 
-                                    <a href="{{ route('fornecedor.edit', $fornecedor->id) }}" title="Editar Dados"><i
+                                    <a href="{{ route('fornecedor.edit', $fornecedor->url) }}" title="Editar Dados"><i
                                             class="fa fa-edit text-primary"></i></a>
                                 </td>
                             </tr>
@@ -44,10 +44,10 @@
                                 <td>{{ $fornecedor->fone }}</td>
 
                                 <td>
-                                    <a href="{{ route('fornecedor.show', $fornecedor->id) }}" title="Ver Fornecedor"><i
+                                    <a href="{{ route('fornecedor.show', $fornecedor->url) }}" title="Ver Fornecedor"><i
                                             class="fas fa-list text-dark"></i></a>
 
-                                    <a href="{{ route('fornecedor.edit', $fornecedor->id) }}" title="Editar Dados"><i
+                                    <a href="{{ route('fornecedor.edit', $fornecedor->url) }}" title="Editar Dados"><i
                                             class="fa fa-edit text-primary"></i></a>
                                 </td>
                             </tr>

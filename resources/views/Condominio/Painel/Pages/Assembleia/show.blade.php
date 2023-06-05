@@ -61,7 +61,7 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('assembleia.destroy', $assembleia->id) }}" method="POST">
+                            <form action="{{ route('assembleia.destroy', $assembleia->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" title="Deletar Assembleia - {{ $assembleia->titulo }}"
