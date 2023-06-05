@@ -35,4 +35,9 @@ class Unidade extends Model
     {
         return $this->hasMany(Visitante::class);
     }
+
+    public function contaRecebers()
+    {
+        return $this->hasMany(ContaReceber::class);
+    }
 }

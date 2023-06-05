@@ -22,7 +22,7 @@
                         <th class="esc">Conta Bancária</th>
                         <th class="esc">Valor</th>
                         <th class="esc">Pago</th>
-                        <th class="esc">fornecedor</th>
+                        <th class="esc">Fornecedor</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -38,10 +38,10 @@
                                 <td class="esc">{{ $contaPagar->pago === 'S' ? 'Sim' : 'Não' }}</td>
                                 <td class="esc">{{ $contaPagar->fornecedor->razao_social }}</td>
                                 <td>
-                                    <a href="{{ route('conta_pagar.show', $contaPagar->id) }}" title="Ver Conta a Pagar"><i
+                                    <a href="{{ route('conta_pagar.show', $contaPagar->url) }}" title="Ver Conta a Pagar"><i
                                             class="fas fa-list text-dark"></i></a>
 
-                                    <a href="{{ route('conta_pagar.edit', $contaPagar->id) }}" title="Editar Dados"><i
+                                    <a href="{{ route('conta_pagar.edit', $contaPagar->url) }}" title="Editar Dados"><i
                                             class="fa fa-edit text-primary"></i></a>
                                 </td>
                             </tr>
@@ -55,10 +55,10 @@
                                 <td class="esc">{{ $contaPagar->pago === 'S' ? 'Sim' : 'Não' }}</td>
                                 <td class="esc">{{ $contaPagar->fornecedor->razao_social }}</td>
                                 <td>
-                                    <a href="{{ route('conta_pagar.show', $contaPagar->id) }}" title="Ver Conta a Pagar"><i
+                                    <a href="{{ route('conta_pagar.show', $contaPagar->url) }}" title="Ver Conta a Pagar"><i
                                             class="fas fa-list text-dark"></i></a>
 
-                                    <a href="{{ route('conta_pagar.edit', $contaPagar->id) }}" title="Editar Dados"><i
+                                    <a href="{{ route('conta_pagar.edit', $contaPagar->url) }}" title="Editar Dados"><i
                                             class="fa fa-edit text-primary"></i></a>
                                 </td>
                             </tr>

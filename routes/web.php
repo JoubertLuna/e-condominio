@@ -11,6 +11,8 @@ use App\Http\Controllers\Condominio\Painel\{
     BlocoController,
     CategoriaController,
     CondominioController,
+    ContaPagarController,
+    ContaReceberController,
     FornecedorController,
     HomeController,
     LivroController,
@@ -34,7 +36,6 @@ Route::middleware('auth', 'verified')->group(function () {
     #Route Home
 
     // Condominio
-
     #Route Condominio
     Route::resource('condominio', CondominioController::class);
     #Route Condominio
@@ -78,11 +79,9 @@ Route::middleware('auth', 'verified')->group(function () {
     #Route Reserva
     Route::resource('reserva', ReservaController::class);
     #Route Reserva
-
     // Condominio
 
     // Financeiro
-
     #Route Banco
     Route::resource('banco', BancoController::class);
     #Route Banco
@@ -99,6 +98,13 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::resource('fornecedor', FornecedorController::class);
     #Route Fornecedor
 
+    #Route Pagar
+    Route::resource('conta_pagar', ContaPagarController::class);
+    #Route Pagar
+
+    #Route Receber
+    Route::resource('conta_receber', ContaReceberController::class);
+    #Route Receber
     // Financeiro
 
 
@@ -110,10 +116,6 @@ Route::middleware('auth', 'verified')->group(function () {
     // #Route Estado
     // Route::resource('estado', EstadoController::class);
     // #Route Estado
-
-    // #Route Pagar
-    // Route::resource('conta_pagar', ContaPagarController::class);
-    // #Route Pagar
 
     // #Route Visitante
     // Route::resource('visitante', VisitanteController::class);

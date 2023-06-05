@@ -82,4 +82,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Visitante::class);
     }
+
+    public function contaRecebers()
+    {
+        return $this->hasMany(ContaReceber::class);
+    }
 }

@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Detalhes da Conta a Pagar')
+@section('title', 'Detalhes da Conta a Receber')
 
 @section('content_header')
     <div align="left">
-        <h1>Detalhes da Conta a Pagar <b>{{ $contaPagar->nome }}</b></h1>
+        <h1>Detalhes da Conta a Receber <b>{{ $contaReceber->nome }}</b></h1>
     </div>
     <div align="right">
-        <a href="{{ route('conta_pagar.index') }}" class="btn btn-dark">Voltar</a>
+        <a href="{{ route('conta_receber.index') }}" class="btn btn-dark">Voltar</a>
     </div>
 @stop
 
@@ -20,25 +20,31 @@
                     <hr>
                     <ul>
                         <li>
-                            <strong>Nome da Conta a Pagar: </strong> {{ $contaPagar->nome }}
+                            <strong>Nome da Conta a Receber: </strong> {{ $contaReceber->nome }}
                         </li>
                         <li>
-                            <strong>Data da Conta: </strong> {{ date('d/m/Y', strtotime($contaPagar->data)) }}
+                            <strong>Categoria da Conta: </strong> {{ $contaReceber->categoria->nome }}
                         </li>
                         <li>
-                            <strong>Categoria da Conta: </strong> {{ $contaPagar->categoria->nome }}
+                            <strong>Data da Conta: </strong> {{ date('d/m/Y', strtotime($contaReceber->data)) }}
                         </li>
                         <li>
-                            <strong>Conta Bancária: </strong> {{ $contaPagar->bancaria->nome }}
+                            <strong>Conta Bancária: </strong> {{ $contaReceber->bancaria->nome }}
                         </li>
                         <li>
-                            <strong>Fornecedor: </strong> {{ $contaPagar->fornecedor->razao_social }}
+                            <strong>Valor: </strong> R$ {{ number_format($contaReceber->valor, 2, ',', '.') }}
                         </li>
                         <li>
-                            <strong>Valor: </strong> R$ {{ number_format($contaPagar->valor, 2, ',', '.') }}
+                            <strong>Pago: </strong> {{ $contaReceber->pago === 'S' ? 'Sim' : 'Não' }}
                         </li>
                         <li>
-                            <strong>Pago: </strong> {{ $contaPagar->pago === 'S' ? 'Sim' : 'Não' }}
+                            <strong>Bloco: </strong> {{ $contaReceber->bloco->nome }}
+                        </li>
+                        <li>
+                            <strong>Unidade: </strong> {{ $contaReceber->unidade->nome }}
+                        </li>
+                        <li>
+                            <strong>Morador: </strong> {{ $contaReceber->user->name }}
                         </li>
                     </ul>
                 </div>
@@ -47,7 +53,7 @@
                     <hr>
                     <ul>
                         <li>
-                            <strong>Obs: </strong> {{ $contaPagar->obs }}
+                            <strong>Obs: </strong> {{ $contaReceber->obs }}
                         </li>
                     </ul>
                 </div>
@@ -57,7 +63,7 @@
             <div class="form-group">
                 <button type="button" class="btn btn-sm btn-dark" data-toggle="modal" data-target="#modal-primary"><i
                         class="fa fa-trash text-danger"></i>
-                    Deletar Conta a Pagar - {{ $contaPagar->nome }}</button>
+                    Deletar Conta a Receber - {{ $contaReceber->nome }}</button>
             </div>
 
             <div class="modal fade" id="modal-primary">
@@ -70,12 +76,12 @@
                             </button>
                         </div>
                         <div align="center" class="modal-body">
-                            <form action="{{ route('conta_pagar.destroy', $contaPagar->url) }}" method="POST">
+                            <form action="{{ route('conta_receber.destroy', $contaReceber->url) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" title="Deletar Conta a Pagar - {{ $contaPagar->nome }}"
+                                <button type="submit" title="Deletar Conta a Receber - {{ $contaReceber->nome }}"
                                     class="btn btn-sm btn-dark" width="150"><i class="fa fa-trash text-danger"></i>
-                                    Deletar Conta a Pagar - {{ $contaPagar->nome }}</button>
+                                    Deletar Conta a Receber - {{ $contaReceber->nome }}</button>
                             </form>
                         </div>
                         <div class="modal-footer justify-content-between"></div>

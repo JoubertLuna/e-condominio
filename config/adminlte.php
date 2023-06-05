@@ -395,14 +395,14 @@ return [
                 ],
                 [
                     'text' => 'Contas a Pagar',
-                    #'route'  => 'conta_pagar.index',
+                    'route'  => 'conta_pagar.index',
                     'icon'    => 'fas fa-money-bill-wave',
                     // 'can'    => 'conta_pagar',
                 ],
                 [
                     'text' => 'Contas a Receber',
-                    #'route'  => 'conta_pagar.index',
-                    'icon'    => 'fas fa-money-bill-wave',
+                    'route'  => 'conta_receber.index',
+                    'icon'    => 'fas fa-money-bill-alt',
                     // 'can'    => 'conta_receber',
                 ],
 

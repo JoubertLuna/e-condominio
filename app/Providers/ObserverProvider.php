@@ -11,6 +11,8 @@ use App\Models\Condominio\Painel\{
     Bloco,
     Categoria,
     Condominio,
+    ContaPagar,
+    ContaReceber,
     Fornecedor,
     Livro,
     Pet,
@@ -29,6 +31,8 @@ use App\Observers\Condominio\Painel\{
     BlocoObserver,
     CategoriaObserver,
     CondominioObserver,
+    ContaPagarObserver,
+    ContaReceberObserver,
     FornecedorObserver,
     LivroObserver,
     PetObserver,
@@ -74,6 +78,8 @@ class ObserverProvider extends ServiceProvider
         Categoria::observe(CategoriaObserver::class);
         Bancaria::observe(BancariaObserver::class);
         Fornecedor::observe(FornecedorObserver::class);
+        ContaPagar::observe(ContaPagarObserver::class);
+        ContaReceber::observe(ContaReceberObserver::class);
         //Financeiro
     }
 }

@@ -10,4 +10,14 @@ class Categoria extends Model
     use HasFactory;
 
     protected $fillable = ['nome', 'url'];
+
+    public function contaPagars()
+    {
+        return $this->hasMany(ContaPagar::class);
+    }
+
+    public function contaRecebers()
+    {
+        return $this->hasMany(ContaReceber::class);
+    }
 }
