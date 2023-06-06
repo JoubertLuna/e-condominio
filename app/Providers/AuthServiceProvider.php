@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Gate;
+use App\Models\Condominio\Painel\Resource;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -21,6 +22,12 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $resources = Resource::all();
+
+        foreach ($resources as $resource) {
+            Gate::define($resource->resource, function ($user) use ($resource) {
+                return $resource->roles->contains($user->role);
+            });
+        }
     }
 }

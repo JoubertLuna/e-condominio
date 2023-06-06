@@ -87,4 +87,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ContaReceber::class);
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }

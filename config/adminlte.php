@@ -440,6 +440,18 @@ return [
                     'icon' => 'fas fa-globe',
                     // 'can'    => 'estado',
                 ],
+                [
+                    'text' => 'Perfil',
+                    'route'  => 'role.index',
+                    'icon'    => 'fas fa-id-card',
+                    //'can'    => 'profile',
+                ],
+                [
+                    'text' => 'Permissão',
+                    'route'  => 'resource.index',
+                    'icon'    => 'fas fa-shield-alt',
+                    //'can'    => 'permission',
+                ],
             ],
         ],
     ],

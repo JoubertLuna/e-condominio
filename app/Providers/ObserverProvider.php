@@ -19,6 +19,8 @@ use App\Models\Condominio\Painel\{
     Patrimonio,
     Pet,
     Reserva,
+    Resource,
+    Role,
     Unidade,
     User,
     Veiculo,
@@ -42,6 +44,8 @@ use App\Observers\Condominio\Painel\{
     PatrimonioObserver,
     PetObserver,
     ReservaObserver,
+    ResourceObserver,
+    RoleObserver,
     UnidadeObserver,
     UserObserver,
     VeiculoObserver,
@@ -91,6 +95,8 @@ class ObserverProvider extends ServiceProvider
         //Configurações
         Patrimonio::observe(PatrimonioObserver::class);
         Estado::observe(EstadoObserver::class);
+        Role::observe(RoleObserver::class);
+        Resource::observe(ResourceObserver::class);
         //Configurações
 
         //Visitante

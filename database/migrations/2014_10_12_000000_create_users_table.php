@@ -28,6 +28,7 @@ return new class extends Migration
             $table->foreignId('condominio_id')->constrained()->onDelete('cascade');
             $table->foreignId('bloco_id')->constrained()->onDelete('cascade');
             $table->foreignId('unidade_id')->constrained()->onDelete('cascade');
+            $table->foreignId('role_id')->nullable()->constrained()->onDelete('SET NULL');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -20,6 +20,8 @@ use App\Http\Controllers\Condominio\Painel\{
     PatrimonioController,
     PetController,
     ReservaController,
+    ResourceController,
+    RoleController,
     UnidadeController,
     UserController,
     VeiculoController,
@@ -32,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LoginController::class, 'showLoginForm']);
 #Route Login
 
-Route::middleware('auth', 'verified')->group(function () {
+Route::middleware('auth', 'verified', 'access.control.list')->group(function () {
 
     #Route Home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -118,6 +120,14 @@ Route::middleware('auth', 'verified')->group(function () {
     #Route Estado
     Route::resource('estado', EstadoController::class);
     #Route Estado
+
+    #Route Role
+    Route::resource('role', RoleController::class);
+    #Route Role
+
+    #Route Resource
+    Route::resource('resource', ResourceController::class);
+    #Route Resource
     // Configurações
 
     //Visitante

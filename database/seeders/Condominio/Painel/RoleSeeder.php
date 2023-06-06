@@ -1,0 +1,28 @@
+<?php
+
+namespace Database\Seeders\Condominio\Painel;
+
+use App\Models\Condominio\Painel\Role;
+use Illuminate\Database\Seeder;
+
+class RoleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        Role::create([
+            'nome' => 'Administrador',
+            'role' => 'Role_Administrador',
+        ]);
+        Role::create([
+            'nome' => 'Morador',
+            'role' => 'Role_Morador',
+        ]);
+        Role::create([
+            'nome' => 'Portaria',
+            'role' => 'Role_Portaria',
+        ]);
+    }
+}
