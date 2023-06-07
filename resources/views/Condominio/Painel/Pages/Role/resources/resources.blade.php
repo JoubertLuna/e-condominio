@@ -5,11 +5,11 @@
 @section('content_header')
     <div class="row">
         <div class="col-md-6">
-            <a href="{{ route('profile.permissions.available', $profile->id) }}" class="btn btn-dark"><i
+            <a href="{{ route('role.resources.available', $role->id) }}" class="btn btn-dark"><i
                     class="fas fa-plus-circle"></i> Adicionar Permissão ao Perfil</a>
         </div>
         <div align="right" class="col-md-6">
-            <a href="{{ route('profile.index') }}" class="btn btn-dark"><i class="fas fa-backward"></i> Voltar</a>
+            <a href="{{ route('role.index') }}" class="btn btn-dark"><i class="fas fa-backward"></i> Voltar</a>
         </div>
     </div>
 @stop
@@ -20,7 +20,7 @@
 
     <div class="card">
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Nome da Permissão</th>
@@ -28,11 +28,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($permissions as $permission)
+                    @foreach ($resources as $resource)
                         <tr>
-                            <td>{{ $permission->nome }}</td>
+                            <td>{{ $resource->nome }}</td>
                             <td>
-                                <a href="{{ route('profile.permissions.detach', [$profile->id, $permission->id]) }}"
+                                <a href="{{ route('role.resources.detach', [$role->id, $resource->id]) }}"
                                     title="Remover Permissão"><i class="fa fa-trash text-danger"></i></a>
 
                             </td>
@@ -41,18 +41,8 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-footer">
+            {!! $resources->links() !!}
+        </div>
     </div>
-@stop
-
-@section('js')
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-    </script>
 @stop

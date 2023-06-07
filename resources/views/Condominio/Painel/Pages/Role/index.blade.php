@@ -27,13 +27,13 @@
                             <td class="esc"><b><i>{{ $role->role }}</i></b></td>
 
                             <td>
-                                {{-- <a href="{{ route('profile.permissions', $profile->id) }}" title="Inserir Permissões"><i
+                                <a href="{{ route('role.resources', $role->id) }}" title="Inserir Permissões"><i
                                         class="fas fa-shield-alt text-success"></i>
-                                    @if ($profile->permissions->count() > 0)
+                                    @if ($role->resources->count() > 0)
                                         <span
-                                            class="badge badge-danger"><small>{{ $profile->permissions->count() }}</small></span>
+                                            class="badge badge-danger"><small>{{ $role->resources->count() }}</small></span>
                                     @endif
-                                </a> --}}
+                                </a>
 
                                 <a href="{{ route('role.show', $role->url) }}" title="Ver Perfil ou deletar"><i
                                         class="fas fa-list text-dark"></i></a>

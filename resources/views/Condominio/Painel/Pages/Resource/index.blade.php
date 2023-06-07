@@ -27,16 +27,16 @@
                             <td class="esc"><b><i>{{ $resource->resource }}</i></b></td>
 
                             <td>
-                                {{-- <a href="{{ route('permissions.profile', $permission->id) }}" title="Inserir Permissões"><i
+                                <a href="{{ route('resources.role', $resource->id) }}" title="Inserir Permissões"><i
                                         class="fas fa-id-card text-success"></i>
-                                    @if ($permission->profiles->count() > 0)
+                                    @if ($resource->roles->count() > 0)
                                         <span
-                                            class="badge badge-danger"><small>{{ $permission->profiles->count() }}</small></span>
+                                            class="badge badge-danger"><small>{{ $resource->roles->count() }}</small></span>
                                     @endif
-                                </a> --}}
+                                </a>
 
-                                <a href="{{ route('resource.show', $resource->url) }}"
-                                    title="Ver Permissão ou deletar"><i class="fas fa-list text-dark"></i></a>
+                                <a href="{{ route('resource.show', $resource->url) }}" title="Ver Permissão ou deletar"><i
+                                        class="fas fa-list text-dark"></i></a>
 
                                 <a href="{{ route('resource.edit', $resource->url) }}" title="Editar Dados"><i
                                         class="fa fa-edit text-primary"></i></a>

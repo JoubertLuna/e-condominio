@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div align="right">
-        <a href="{{ route('profile.permissions', $profile->id) }}" class="btn btn-dark"><i class="fas fa-backward"></i>
+        <a href="{{ route('role.resources', $role->id) }}" class="btn btn-dark"><i class="fas fa-backward"></i>
             Voltar</a>
     </div>
 @stop
@@ -15,9 +15,9 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('profile.permissions.attach', $profile->id) }}" method="POST">
+            <form action="{{ route('role.resources.attach', $role->id) }}" method="POST">
                 @csrf
-                <table id="example1" class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th width="50px">#</th>
@@ -26,12 +26,12 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($permissions as $permission)
+                        @foreach ($resources as $resource)
                             <tr>
                                 <td align="center">
-                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                                    <input type="checkbox" name="resources[]" value="{{ $resource->id }}">
                                 </td>
-                                <td>{{ $permission->nome }}</td>
+                                <td>{{ $resource->nome }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -44,18 +44,8 @@
                 </tr>
             </form>
         </div>
+        <div class="card-footer">
+            {!! $resources->links() !!}
+        </div>
     </div>
-@stop
-
-@section('js')
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-    </script>
 @stop

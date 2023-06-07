@@ -137,4 +137,6 @@ Route::middleware('auth', 'verified', 'access.control.list')->group(function () 
     //Visitante
 });
 
+require __DIR__ . '/acl.php';
+
 Auth::routes(['register' => false, 'verify' => true]);

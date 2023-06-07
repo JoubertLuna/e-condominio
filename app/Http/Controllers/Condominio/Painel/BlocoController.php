@@ -25,6 +25,7 @@ class BlocoController extends Controller
      */
     public function index()
     {
+
         $blocos = $this->bloco->with('condominio')->paginate(100000000);
         $condominios = $this->condominio->all('id', 'nome');
         return view('Condominio.Painel.Pages.Bloco.index', compact('blocos', 'condominios'));

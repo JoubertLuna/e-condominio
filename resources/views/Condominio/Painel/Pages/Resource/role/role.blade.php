@@ -5,7 +5,7 @@
 @section('content_header')
 
     <div align="right">
-        <a href="{{ route('permission.index') }}" class="btn btn-dark"><i class="fas fa-backward"></i> Voltar</a>
+        <a href="{{ route('resource.index') }}" class="btn btn-dark"><i class="fas fa-backward"></i> Voltar</a>
     </div>
 @stop
 
@@ -15,7 +15,7 @@
 
     <div class="card">
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Nome do Perfil</th>
@@ -23,11 +23,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($profiles as $profile)
+                    @foreach ($roles as $role)
                         <tr>
-                            <td>{{ $profile->nome }}</td>
+                            <td>{{ $role->nome }}</td>
                             <td>
-                                <a href="{{ route('profile.permissions.detach', [$profile->id, $permission->id]) }}"
+                                <a href="{{ route('role.resources.detach', [$role->id, $resource->id]) }}"
                                     title="Remover Permissão"><i class="fa fa-trash text-danger"></i></a>
                             </td>
                         </tr>
@@ -35,18 +35,8 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-footer">
+            {!! $roles->links() !!}
+        </div>
     </div>
-@stop
-
-@section('js')
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-    </script>
 @stop
