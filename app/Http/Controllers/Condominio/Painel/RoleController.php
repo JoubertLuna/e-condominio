@@ -92,7 +92,7 @@ class RoleController extends Controller
             return redirect()->back();
         }
 
-        if ($role->id <= '3') {
+        if ($role->id <= '4') {
             return redirect()->back()->with('error', 'Você não pode deletar perfil padrão do sistema');
         }
 

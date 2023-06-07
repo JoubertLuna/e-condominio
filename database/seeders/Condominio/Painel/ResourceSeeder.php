@@ -12,6 +12,10 @@ class ResourceSeeder extends Seeder
      */
     public function run(): void
     {
+        Resource::create([
+            'nome' => 'Home Index',
+            'resource' => 'home',
+        ]);
         //Condominio
         Resource::create([
             'nome' => 'Condomínio Index',

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Database\Seeders\Condominio\Painel\{
     BlocoSeeder,
     CondominioSeeder,
+    ResourceRoleSeeder,
     ResourceSeeder,
     RoleSeeder,
     UnidadeSeeder,
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             ResourceSeeder::class,
+            ResourceRoleSeeder::class,
             CondominioSeeder::class,
             BlocoSeeder::class,
             UnidadeSeeder::class,

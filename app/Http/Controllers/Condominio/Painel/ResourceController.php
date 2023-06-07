@@ -93,7 +93,7 @@ class ResourceController extends Controller
             return redirect()->back();
         }
 
-        if ($resource->id <= '154') {
+        if ($resource->id <= '155') {
             return redirect()->back()->with('error', 'Você não pode deletar permissão padrão do sistema');
         }
 

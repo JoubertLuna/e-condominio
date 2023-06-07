@@ -24,9 +24,20 @@ class UserSeeder extends Seeder
         $bloco = Bloco::first()->id;
         $unidade = Unidade::first()->id;
 
-        $RoleAdministrador = Role::first()->id;
-        $RoleMorador = Role::find('2')->id;
-        $RolePortaria = Role::find('3')->id;
+        $RoleSuperAdministrador = Role::first()->id;
+        $RoleAdministrador = Role::find('2')->id;
+        $RoleMorador = Role::find('3')->id;
+        $RolePortaria = Role::find('4')->id;
+
+        User::create([
+            'name' => 'Super Administrador - e-condomínio',
+            'email' => 'super@condominio.com',
+            'password' => Hash::make('@super123'),
+            'condominio_id' => $condominio,
+            'bloco_id' => $bloco,
+            'unidade_id' => $unidade,
+            'role_id' => $RoleSuperAdministrador,
+        ]);
 
         User::create([
             'name' => 'Administrador - e-condomínio',

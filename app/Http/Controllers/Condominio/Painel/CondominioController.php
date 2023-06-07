@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Condominio\Painel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Condominio\Painel\CondominioRequest;
 use App\Models\Condominio\Painel\Condominio;
+use App\Models\Condominio\Painel\User;
 use Illuminate\Support\Facades\Storage;
 
 class CondominioController extends Controller
@@ -21,7 +22,11 @@ class CondominioController extends Controller
      */
     public function index()
     {
-        $condominios = $this->condominio->latest()->paginate(100000000);
+
+        $condominios = $this->condominio
+        ->where('id', '=', auth()->user()->condominio_id)
+        ->latest()
+        ->paginate(100000000);
         return view('Condominio.Painel.Pages.Condominio.index', compact('condominios'));
     }
 
