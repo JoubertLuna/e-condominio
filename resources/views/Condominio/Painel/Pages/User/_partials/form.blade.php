@@ -81,7 +81,7 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-6">
             <div class="form-group">
                 <label>Tipo do Morador:</label>
                 <select class="form-control" name="tipo_morador" id="tipo_morador" style="width: 100%;">
@@ -97,7 +97,23 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Perfil:</label>
+                <select class="form-control" name="role_id" id="role_id" style="width: 100%;">
+                    @foreach ($roles as $role)
+                        @if ($role->id === @$user->role_id)
+                            <option value="{{ $role->id }}" selected>{{ $role->nome }}</option>
+                        @else
+                            <option value="{{ $role->id }}">{{ $role->nome }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <div class="form-group">
                 <label>Condomínio:</label>
                 <select class="form-control" name="condominio_id" id="condominio_id" style="width: 100%;">
@@ -111,7 +127,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label>Bloco:</label>
                 <select class="form-control" name="bloco_id" id="bloco_id" style="width: 100%;">
@@ -125,7 +141,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="form-group">
                 <label>Unidade:</label>
                 <select class="form-control" name="unidade_id" id="unidade_id" style="width: 100%;">

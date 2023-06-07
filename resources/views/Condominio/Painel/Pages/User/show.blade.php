@@ -37,6 +37,9 @@
                         <li>
                             <strong>Última Atualização: </strong> {{ $user->updated_at->diffForHumans() }}
                         </li>
+                        <li>
+                            <strong>Perfil: </strong> {{ $user->role->nome }}
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-6">

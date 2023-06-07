@@ -20,7 +20,7 @@ class ResourceController extends Controller
      */
     public function index()
     {
-        $resources = $this->resource->latest()->paginate(100000000);
+        $resources = $this->resource->latest()->orderBy('nome', 'ASC')->paginate(100000000);
         return view('Condominio.Painel.Pages.Resource.index', compact('resources'));
     }
 
@@ -93,7 +93,7 @@ class ResourceController extends Controller
             return redirect()->back();
         }
 
-        if ($resource->id <= '50') {
+        if ($resource->id <= '154') {
             return redirect()->back()->with('error', 'Você não pode deletar permissão padrão do sistema');
         }
 

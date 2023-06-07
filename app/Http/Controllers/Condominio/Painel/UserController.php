@@ -8,6 +8,7 @@ use App\Http\Requests\Condominio\Painel\UserRequest;
 use App\Models\Condominio\Painel\{
     Bloco,
     Condominio,
+    Role,
     Unidade,
     User,
 };
@@ -20,14 +21,15 @@ use Illuminate\Support\Facades\{
 
 class UserController extends Controller
 {
-    private $bloco, $condominio, $unidade, $user;
+    private $bloco, $condominio, $unidade, $user, $role;
 
-    public function __construct(User $user, Bloco $bloco, Condominio $condominio, Unidade $unidade)
+    public function __construct(User $user, Bloco $bloco, Condominio $condominio, Unidade $unidade, Role $role)
     {
         $this->bloco = $bloco;
         $this->condominio = $condominio;
         $this->unidade = $unidade;
         $this->user = $user;
+        $this->role = $role;
     }
 
     /**
@@ -35,11 +37,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->user->with('condominio', 'bloco', 'unidade')->paginate(100000000);
+        $users = $this->user->with('condominio', 'bloco', 'unidade', 'role')->paginate(100000000);
         $blocos = $this->bloco->all('id', 'nome');
         $unidades = $this->unidade->all('id', 'nome');
         $condominios = $this->condominio->all('id', 'nome');
-        return view('Condominio.Painel.Pages.User.index', compact('blocos', 'condominios', 'unidades', 'users'));
+        $roles = $this->role->all('id', 'nome');
+        return view('Condominio.Painel.Pages.User.index', compact('blocos', 'condominios', 'unidades', 'users','roles'));
     }
 
     /**
@@ -50,7 +53,8 @@ class UserController extends Controller
         $blocos = $this->bloco->all('id', 'nome');
         $unidades = $this->unidade->all('id', 'nome');
         $condominios = $this->condominio->all('id', 'nome');
-        return view('Condominio.Painel.Pages.User.create', compact('condominios', 'unidades', 'blocos'));
+        $roles = $this->role->all('id', 'nome');
+        return view('Condominio.Painel.Pages.User.create', compact('condominios', 'unidades', 'blocos', 'roles'));
     }
 
     /**
@@ -81,14 +85,15 @@ class UserController extends Controller
      */
     public function show(string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade', 'role')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
         $blocos = $this->bloco->all('id', 'nome');
         $unidades = $this->unidade->all('id', 'nome');
         $condominios = $this->condominio->all('id', 'nome');
-        return view('Condominio.Painel.Pages.User.show', compact('blocos', 'condominios', 'unidades', 'user'));
+        $roles = $this->role->all('id', 'nome');
+        return view('Condominio.Painel.Pages.User.show', compact('blocos', 'condominios', 'unidades', 'user', 'roles'));
     }
 
     /**
@@ -96,14 +101,15 @@ class UserController extends Controller
      */
     public function edit(string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade', 'role')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
         $blocos = $this->bloco->all('id', 'nome');
         $unidades = $this->unidade->all('id', 'nome');
         $condominios = $this->condominio->all('id', 'nome');
-        return view('Condominio.Painel.Pages.User.edit', compact('blocos', 'condominios', 'unidades', 'user'));
+        $roles = $this->role->all('id', 'nome');
+        return view('Condominio.Painel.Pages.User.edit', compact('blocos', 'condominios', 'unidades', 'user', 'roles'));
     }
 
     /**
@@ -111,7 +117,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade', 'role')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -146,7 +152,7 @@ class UserController extends Controller
      */
     public function destroy(string $url)
     {
-        if (!$user = $this->user->with('condominio', 'bloco', 'unidade')->where('url', $url)->first()) {
+        if (!$user = $this->user->with('condominio', 'bloco', 'unidade', 'role')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

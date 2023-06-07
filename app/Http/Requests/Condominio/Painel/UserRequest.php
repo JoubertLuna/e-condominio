@@ -38,6 +38,7 @@ class UserRequest extends FormRequest
             'condominio_id' => 'required|exists:condominios,id',
             'bloco_id' => 'required|exists:blocos,id',
             'unidade_id' => 'required|exists:unidades,id',
+            'role_id' => 'required|exists:roles,id',
         ];
     }
 }
