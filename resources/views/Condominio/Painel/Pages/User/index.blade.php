@@ -3,8 +3,10 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('user.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar novo
-        Usuário / Morador</a>
+    @can('user.create')
+        <a href="{{ route('user.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar novo
+            Usuário / Morador</a>
+    @endcan
 @stop
 
 @section('content')
@@ -44,11 +46,14 @@
                             <td class="esc">{{ $user->role->nome }}</td>
 
                             <td>
-                                <a href="{{ route('user.show', $user->url) }}" title="Ver Usuário"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('user.edit', $user->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('user.show')
+                                    <a href="{{ route('user.show', $user->url) }}" title="Ver Usuário"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('user.edit')
+                                    <a href="{{ route('user.edit', $user->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

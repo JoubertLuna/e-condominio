@@ -37,12 +37,20 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->user->with('condominio', 'bloco', 'unidade', 'role')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $users = $this->user->with('condominio', 'bloco', 'unidade', 'role')->latest()->paginate(100000000);
+        } else {
+            $users = $this->user->where('id', '=', auth()->user()->id)
+            ->with('condominio', 'bloco', 'unidade', 'role')
+            ->latest()
+            ->paginate(100000000);
+        }
+
         $blocos = $this->bloco->all('id', 'nome');
         $unidades = $this->unidade->all('id', 'nome');
         $condominios = $this->condominio->all('id', 'nome');
         $roles = $this->role->all('id', 'nome');
-        return view('Condominio.Painel.Pages.User.index', compact('blocos', 'condominios', 'unidades', 'users','roles'));
+        return view('Condominio.Painel.Pages.User.index', compact('blocos', 'condominios', 'unidades', 'users', 'roles'));
     }
 
     /**

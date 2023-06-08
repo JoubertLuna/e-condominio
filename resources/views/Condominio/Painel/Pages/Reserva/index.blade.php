@@ -3,8 +3,11 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('reserva.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Reserva de
-        Ambiente</a>
+    @can('reserva.create')
+        <a href="{{ route('reserva.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Reserva de
+            Ambiente</a>
+    @endcan
+
 @stop
 
 @section('content')
@@ -16,6 +19,7 @@
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th>Título do Evento</th>
                         <th>Área Comum</th>
                         <th class="esc">Data do Evento</th>
                         <th class="esc">Morador</th>
@@ -27,17 +31,21 @@
                 <tbody>
                     @foreach ($reservas as $reserva)
                         <tr>
+                            <td>{{ $reserva->titulo }}</td>
                             <td>{{ $reserva->area->nome }}</td>
                             <td class="esc">{{ date('d/m/Y', strtotime($reserva->data)) }}</td>
                             <td class="esc">{{ $reserva->user->name }}</td>
                             <td class="esc">{{ $reserva->user->celular }}</td>
                             <td class="esc">{{ $reserva->aprovado === 'N' ? 'Não' : 'Sim' }}</td>
                             <td>
-                                <a href="{{ route('reserva.show', $reserva->url) }}"
-                                    title="Ver Reserva de Ambiente"><i class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('reserva.edit', $reserva->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('reserva.show')
+                                    <a href="{{ route('reserva.show', $reserva->url) }}" title="Ver Reserva de Ambiente"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('reserva.edit')
+                                    <a href="{{ route('reserva.edit', $reserva->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

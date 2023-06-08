@@ -20,4 +20,9 @@ class Area extends Model
     {
         return $this->hasMany(Reserva::class);
     }
+
+    public function livros()
+    {
+        return $this->hasMany(Livro::class);
+    }
 }

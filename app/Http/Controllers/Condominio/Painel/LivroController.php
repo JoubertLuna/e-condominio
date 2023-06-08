@@ -5,18 +5,20 @@ namespace App\Http\Controllers\Condominio\Painel;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Condominio\Painel\LivroRequest;
 use App\Models\Condominio\Painel\{
+    Area,
     Livro,
     User,
 };
 
 class LivroController extends Controller
 {
-    private $livro, $user;
+    private $livro, $user , $area;
 
-    public function __construct(Livro $livro, User $user)
+    public function __construct(Livro $livro, User $user, Area $area)
     {
         $this->livro = $livro;
         $this->user = $user;
+        $this->area = $area;
     }
 
     /**
@@ -24,9 +26,10 @@ class LivroController extends Controller
      */
     public function index()
     {
-        $livros = $this->livro->with('user')->paginate(100000000);
+        $livros = $this->livro->with('user', 'area')->paginate(100000000);
         $users = $this->user->all('id', 'name');
-        return view('Condominio.Painel.Pages.Livro.index', compact('livros', 'users'));
+        $areas = $this->area->all('id', 'nome');
+        return view('Condominio.Painel.Pages.Livro.index', compact('livros', 'users', 'areas'));
     }
 
     /**
@@ -35,7 +38,8 @@ class LivroController extends Controller
     public function create()
     {
         $users = $this->user->all('id', 'name');
-        return view('Condominio.Painel.Pages.Livro.create', compact('users'));
+        $areas = $this->area->all('id', 'nome');
+        return view('Condominio.Painel.Pages.Livro.create', compact('users', 'areas'));
     }
 
     /**
@@ -55,12 +59,13 @@ class LivroController extends Controller
      */
     public function show($url)
     {
-        if (!$livro = $this->livro->with('user')->where('url', $url)->first()) {
+        if (!$livro = $this->livro->with('user', 'area')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
         $users = $this->user->all('id', 'name');
-        return view('Condominio.Painel.Pages.Livro.show', compact('livro', 'users'));
+        $areas = $this->area->all('id', 'nome');
+        return view('Condominio.Painel.Pages.Livro.show', compact('livro', 'users', 'areas'));
     }
 
     /**
@@ -73,7 +78,8 @@ class LivroController extends Controller
         }
 
         $users = $this->user->all('id', 'name');
-        return view('Condominio.Painel.Pages.Livro.edit', compact('livro', 'users'));
+        $areas = $this->area->all('id', 'nome');
+        return view('Condominio.Painel.Pages.Livro.edit', compact('livro', 'users', 'areas'));
     }
 
     /**
@@ -81,7 +87,7 @@ class LivroController extends Controller
      */
     public function update(LivroRequest $request, $url)
     {
-        if (!$livro = $this->livro->with('user')->where('url', $url)->first()) {
+        if (!$livro = $this->livro->with('user', 'area')->where('url', $url)->first()) {
             return redirect()->back();
         }
 
@@ -97,7 +103,7 @@ class LivroController extends Controller
      */
     public function destroy($url)
     {
-        if (!$livro = $this->livro->with('user')->where('url', $url)->first()) {
+        if (!$livro = $this->livro->with('user', 'area')->where('url', $url)->first()) {
             return redirect()->back();
         }
 

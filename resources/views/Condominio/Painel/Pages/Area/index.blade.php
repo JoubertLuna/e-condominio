@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('area.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Área Comum</a>
+    @can('area.create')
+        <a href="{{ route('area.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Área Comum</a>
+    @endcan
 @stop
 
 @section('content')
@@ -24,11 +26,14 @@
                         <tr>
                             <td>{{ $area->nome }}</td>
                             <td>
-                                <a href="{{ route('area.show', $area->url) }}" title="Ver Área Comum"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('area.edit', $area->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('area.show')
+                                    <a href="{{ route('area.show', $area->url) }}" title="Ver Área Comum"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('area.edit')
+                                    <a href="{{ route('area.edit', $area->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

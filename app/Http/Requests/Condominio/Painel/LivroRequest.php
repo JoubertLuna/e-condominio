@@ -28,6 +28,7 @@ class LivroRequest extends FormRequest
             'descricao' => 'required|min:3|max:5000|',
             'data' => 'required|min:10|max:10|',
             'user_id' => 'required|exists:users,id',
+            'area_id' => 'required|exists:areas,id',
         ];
     }
 }

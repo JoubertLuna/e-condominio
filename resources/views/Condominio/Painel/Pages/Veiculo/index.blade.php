@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('veiculo.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Veículo</a>
+    @can('veiculo.create')
+        <a href="{{ route('veiculo.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Veículo</a>
+    @endcan
 @stop
 
 @section('content')
@@ -36,11 +38,14 @@
                             <td>{{ $veiculo->placa }}</td>
                             <td>{{ $veiculo->user->celular }}</td>
                             <td>
-                                <a href="{{ route('veiculo.show', $veiculo->url) }}" title="Ver Veículo"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('veiculo.edit', $veiculo->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('veiculo.show')
+                                    <a href="{{ route('veiculo.show', $veiculo->url) }}" title="Ver Veículo"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('veiculo.edit')
+                                    <a href="{{ route('veiculo.edit', $veiculo->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

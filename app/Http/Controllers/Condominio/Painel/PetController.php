@@ -25,7 +25,14 @@ class PetController extends Controller
      */
     public function index()
     {
-        $pets = $this->pet->with('user')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $pets = $this->pet->with('user')->latest()->paginate(100000000);
+        } else {
+            $pets = $this->pet->where('user_id', '=', auth()->user()->id)
+                ->with('user')
+                ->latest()
+                ->paginate(100000000);
+        }
         $users = $this->user->all('id', 'name');
         return view('Condominio.Painel.Pages.Pet.index', compact('pets', 'users'));
     }

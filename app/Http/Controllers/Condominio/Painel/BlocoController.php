@@ -25,10 +25,14 @@ class BlocoController extends Controller
      */
     public function index()
     {
-        $blocos = $this->bloco
-        ->where('id', '=', auth()->user()->bloco_id)
-        ->with('condominio')
-        ->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $blocos = $this->bloco->with('condominio')->latest()->paginate(100000000);
+        } else {
+            $blocos = $this->bloco->where('id', '=', auth()->user()->bloco_id)
+                ->with('condominio')
+                ->latest()
+                ->paginate(100000000);
+        }
         $condominios = $this->condominio->all('id', 'nome');
         return view('Condominio.Painel.Pages.Bloco.index', compact('blocos', 'condominios'));
     }

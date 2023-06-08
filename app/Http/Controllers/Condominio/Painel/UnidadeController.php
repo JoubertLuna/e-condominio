@@ -25,7 +25,14 @@ class UnidadeController extends Controller
      */
     public function index()
     {
-        $unidades = $this->unidade->with('bloco')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $unidades = $this->unidade->with('bloco')->latest()->paginate(100000000);
+        } else {
+            $unidades = $this->unidade->where('id', '=', auth()->user()->unidade_id)
+                ->with('bloco')
+                ->latest()
+                ->paginate(100000000);
+        }
         $blocos = $this->bloco->all('id', 'nome');
         return view('Condominio.Painel.Pages.Unidade.index', compact('blocos', 'unidades'));
     }

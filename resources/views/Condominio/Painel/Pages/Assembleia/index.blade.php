@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('assembleia.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Assembleia</a>
+    @can('assembleia.create')
+        <a href="{{ route('assembleia.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Assembleia</a>
+    @endcan
 @stop
 
 @section('content')
@@ -30,11 +32,14 @@
                             <td class="esc">{{ $assembleia->hora }}</td>
                             <td class="esc">{{ $assembleia->area->nome }}</td>
                             <td>
-                                <a href="{{ route('assembleia.show', $assembleia->url) }}" title="Ver Assembleia"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('assembleia.edit', $assembleia->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('assembleia.show')
+                                    <a href="{{ route('assembleia.show', $assembleia->url) }}" title="Ver Assembleia"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('assembleia.edit')
+                                    <a href="{{ route('assembleia.edit', $assembleia->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

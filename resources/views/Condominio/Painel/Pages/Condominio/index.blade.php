@@ -3,10 +3,12 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    @foreach ($condominios as $condominio)
-        <a href="{{ route('condominio.edit', $condominio->url) }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i>
-            Editar Condomínio</a>
-    @endforeach
+    @can('condominio.edit')
+        @foreach ($condominios as $condominio)
+            <a href="{{ route('condominio.edit', $condominio->url) }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i>
+                Editar Condomínio</a>
+        @endforeach
+    @endcan
 @stop
 
 @section('content')
@@ -49,8 +51,11 @@
                             <td class="esc">{{ $condominio->bairro }}</td>
                             <td class="esc">{{ $condominio->numero }}</td>
                             <td>
-                                <a href="{{ route('condominio.show', $condominio->url) }}" title="Ver Comdomínio"><i
-                                        class="fas fa-list text-dark"></i></a>
+                                @can('condominio.show')
+                                    <a href="{{ route('condominio.show', $condominio->url) }}" title="Ver Comdomínio"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+
                             </td>
                         </tr>
                     @endforeach

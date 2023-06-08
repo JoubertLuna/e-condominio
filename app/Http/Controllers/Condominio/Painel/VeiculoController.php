@@ -27,7 +27,15 @@ class VeiculoController extends Controller
      */
     public function index()
     {
-        $veiculos = $this->veiculo->with('user', 'unidade')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $veiculos = $this->veiculo->with('user', 'unidade')->latest()->paginate(100000000);
+        } else {
+            $veiculos = $this->veiculo->where('user_id', '=', auth()->user()->id)
+            ->with('user', 'unidade')
+            ->latest()
+            ->paginate(100000000);
+        }
+
         $users = $this->user->all('id', 'name');
         $unidades = $this->unidade->all('id', 'nome');
         return view('Condominio.Painel.Pages.Veiculo.index', compact('veiculos', 'users', 'unidades'));

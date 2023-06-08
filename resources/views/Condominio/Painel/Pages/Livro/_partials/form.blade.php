@@ -24,22 +24,38 @@
 </div>
 <hr>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label>Data da Ocorrência:</label>
             <input type="date" name="data" id="data" class="form-control" placeholder="08/08/8888"
                 value="{{ $livro->data ?? old('data') }}">
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label>Morador:</label>
             <select class="form-control" name="user_id" id="user_id" style="width: 100%;">
                 @foreach ($users as $user)
-                    @if ($user->id === @$livro->user_id)
-                        <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                    @if (auth()->user()->id <= '2' || $user->id === auth()->user()->id)
+                        @if ($user->id === @$livro->user_id)
+                            <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                        @else
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @endif
+                    @endif
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Local:</label>
+            <select class="form-control" name="area_id" id="area_id" style="width: 100%;">
+                @foreach ($areas as $area)
+                    @if ($area->id === @$livro->area_id)
+                        <option value="{{ $area->id }}" selected>{{ $area->nome }}</option>
                     @else
-                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        <option value="{{ $area->id }}">{{ $area->nome }}</option>
                     @endif
                 @endforeach
             </select>

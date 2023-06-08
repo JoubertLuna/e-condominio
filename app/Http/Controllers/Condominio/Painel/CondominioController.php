@@ -22,11 +22,13 @@ class CondominioController extends Controller
      */
     public function index()
     {
-
-        $condominios = $this->condominio
-        ->where('id', '=', auth()->user()->condominio_id)
-        ->latest()
-        ->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $condominios = $this->condominio->latest()->paginate(100000000);
+        } else {
+            $condominios = $this->condominio->where('id', '=', auth()->user()->condominio_id)
+                ->latest()
+                ->paginate(100000000);
+        }
         return view('Condominio.Painel.Pages.Condominio.index', compact('condominios'));
     }
 

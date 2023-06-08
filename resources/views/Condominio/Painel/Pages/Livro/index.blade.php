@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('livro.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Ocorrência</a>
+    @can('livro.create')
+        <a href="{{ route('livro.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Ocorrência</a>
+    @endcan
 @stop
 
 @section('content')
@@ -19,6 +21,7 @@
                         <th class="esc">Data</th>
                         <th class="esc">Morador</th>
                         <th class="esc">Contato</th>
+                        <th class="esc">Local</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -29,12 +32,16 @@
                             <td class="esc">{{ date('d/m/Y', strtotime($livro->data)) }}</td>
                             <td class="esc">{{ $livro->user->name }}</td>
                             <td class="esc">{{ $livro->user->celular }}</td>
+                            <td class="esc">{{ $livro->area->nome }}</td>
                             <td>
-                                <a href="{{ route('livro.show', $livro->url) }}" title="Ver Ocorrência"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('livro.edit', $livro->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('livro.show')
+                                    <a href="{{ route('livro.show', $livro->url) }}" title="Ver Ocorrência"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('livro.edit')
+                                    <a href="{{ route('livro.edit', $livro->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

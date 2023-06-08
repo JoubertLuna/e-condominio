@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('pet.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Pet</a>
+    @can('pet.create')
+        <a href="{{ route('pet.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Pet</a>
+    @endcan
 @stop
 
 @section('content')
@@ -34,11 +36,14 @@
                             <td class="esc">{{ $pet->user->name }}</td>
                             <td class="esc">{{ $pet->user->celular }}</td>
                             <td>
-                                <a href="{{ route('pet.show', $pet->url) }}" title="Ver Pet"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('pet.edit', $pet->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('pet.show')
+                                    <a href="{{ route('pet.show', $pet->url) }}" title="Ver Pet"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('pet.edit')
+                                    <a href="{{ route('pet.edit', $pet->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

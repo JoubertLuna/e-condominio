@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('bloco.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Bloco</a>
+    @can('bloco.create')
+        <a href="{{ route('bloco.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Bloco</a>
+    @endcan
 @stop
 
 @section('content')
@@ -26,11 +28,14 @@
                             <td>{{ $bloco->nome }}</td>
                             <td class="esc">{{ $bloco->condominio->nome }}</td>
                             <td>
-                                <a href="{{ route('bloco.show', $bloco->url) }}" title="Ver Bloco"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('bloco.edit', $bloco->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('bloco.show')
+                                    <a href="{{ route('bloco.show', $bloco->url) }}" title="Ver Bloco"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('bloco.edit')
+                                    <a href="{{ route('bloco.edit', $bloco->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('url')->unique();
             $table->date('data')->default('2014/10/11');
             $table->text('descricao');
+            $table->foreignId('area_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

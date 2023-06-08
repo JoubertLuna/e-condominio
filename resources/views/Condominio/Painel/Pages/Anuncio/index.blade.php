@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('anuncio.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Anúncio</a>
+    @can('anuncio.create')
+        <a href="{{ route('anuncio.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Anúncio</a>
+    @endcan
 @stop
 
 @section('content')
@@ -30,11 +32,14 @@
                             <td class="esc">{{ $anuncio->user->name }}</td>
                             <td class="esc">{{ $anuncio->user->celular }}</td>
                             <td>
-                                <a href="{{ route('anuncio.show', $anuncio->url) }}" title="Ver Anúncio"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('anuncio.edit', $anuncio->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('anuncio.show')
+                                    <a href="{{ route('anuncio.show', $anuncio->url) }}" title="Ver Anúncio"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('anuncio.edit')
+                                    <a href="{{ route('anuncio.edit', $anuncio->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach
