@@ -24,7 +24,7 @@ class AssembleiaController extends Controller
      */
     public function index()
     {
-        $assembleias = $this->assembleia->with('area')->paginate(100000000);
+        $assembleias = $this->assembleia->with('area')->latest()->paginate(100000000);
         $areas = $this->area->all('id', 'nome');
         return view('Condominio.Painel.Pages.Assembleia.index', compact('assembleias', 'areas'));
     }

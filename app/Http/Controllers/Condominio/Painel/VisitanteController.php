@@ -29,7 +29,14 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-        $visitantes = $this->visitante->with('bloco', 'user', 'unidade')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $visitantes = $this->visitante->with('bloco', 'user', 'unidade')->latest()->paginate(100000000);
+        } else {
+            $visitantes = $this->visitante->where('user_id', '=', auth()->user()->id)
+                ->with('bloco', 'user', 'unidade')
+                ->latest()
+                ->paginate(100000000);
+        }
         $blocos = $this->bloco->all('id', 'nome');
         $unidades = $this->unidade->all('id', 'nome');
         $users = $this->user->all('id', 'name');

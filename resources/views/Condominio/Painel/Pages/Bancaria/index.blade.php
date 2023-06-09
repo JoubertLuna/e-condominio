@@ -3,8 +3,10 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('bancaria.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Conta
-        Bancária</a>
+    @can('bancaria.create')
+        <a href="{{ route('bancaria.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Conta
+            Bancária</a>
+    @endcan
 @stop
 
 @section('content')
@@ -37,11 +39,14 @@
                             <td class="esc">{{ $bancaria->numero }} - {{ $bancaria->digito }}</td>
                             <td class="esc"> {{ $bancaria->condominio->nome }}</td>
                             <td>
-                                <a href="{{ route('bancaria.show', $bancaria->url) }}" title="Ver Conta Bancária"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('bancaria.edit', $bancaria->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('bancaria.show')
+                                    <a href="{{ route('bancaria.show', $bancaria->url) }}" title="Ver Conta Bancária"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('bancaria.edit')
+                                    <a href="{{ route('bancaria.edit', $bancaria->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

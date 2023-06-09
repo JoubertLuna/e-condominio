@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('fornecedor.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Fornecedor</a>
+    @can('fornecedor.create')
+        <a href="{{ route('fornecedor.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Fornecedor</a>
+    @endcan
 @stop
 
 @section('content')
@@ -30,11 +32,14 @@
                                 <td>{{ $fornecedor->fone }}</td>
 
                                 <td>
-                                    <a href="{{ route('fornecedor.show', $fornecedor->url) }}" title="Ver Fornecedor"><i
-                                            class="fas fa-list text-dark"></i></a>
-
-                                    <a href="{{ route('fornecedor.edit', $fornecedor->url) }}" title="Editar Dados"><i
-                                            class="fa fa-edit text-primary"></i></a>
+                                    @can('fornecedor.show')
+                                        <a href="{{ route('fornecedor.show', $fornecedor->url) }}" title="Ver Fornecedor"><i
+                                                class="fas fa-list text-dark"></i></a>
+                                    @endcan
+                                    @can('fornecedor.edit')
+                                        <a href="{{ route('fornecedor.edit', $fornecedor->url) }}" title="Editar Dados"><i
+                                                class="fa fa-edit text-primary"></i></a>
+                                    @endcan
                                 </td>
                             </tr>
                         @else

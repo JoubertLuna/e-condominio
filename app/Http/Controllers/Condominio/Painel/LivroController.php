@@ -12,7 +12,7 @@ use App\Models\Condominio\Painel\{
 
 class LivroController extends Controller
 {
-    private $livro, $user , $area;
+    private $livro, $user, $area;
 
     public function __construct(Livro $livro, User $user, Area $area)
     {
@@ -26,7 +26,14 @@ class LivroController extends Controller
      */
     public function index()
     {
-        $livros = $this->livro->with('user', 'area')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $livros = $this->livro->with('user', 'area')->latest()->paginate(100000000);
+        } else {
+            $livros = $this->livro->where('user_id', '=', auth()->user()->id)
+                ->with('user', 'area')
+                ->latest()
+                ->paginate(100000000);
+        }
         $users = $this->user->all('id', 'name');
         $areas = $this->area->all('id', 'nome');
         return view('Condominio.Painel.Pages.Livro.index', compact('livros', 'users', 'areas'));

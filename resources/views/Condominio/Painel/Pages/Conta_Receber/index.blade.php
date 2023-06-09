@@ -3,8 +3,10 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('conta_receber.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Conta a
-        Receber</a>
+    @can('conta_receber.create')
+        <a href="{{ route('conta_receber.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Conta a
+            Receber</a>
+    @endcan
 @stop
 
 @section('content')
@@ -42,11 +44,14 @@
                                 <td class="esc">{{ $contaReceber->unidade->nome }}</td>
                                 <td class="esc">{{ $contaReceber->user->name }}</td>
                                 <td>
-                                    <a href="{{ route('conta_receber.show', $contaReceber->url) }}"
-                                        title="Ver Conta a Receber"><i class="fas fa-list text-dark"></i></a>
-
-                                    <a href="{{ route('conta_receber.edit', $contaReceber->url) }}" title="Editar Dados"><i
-                                            class="fa fa-edit text-primary"></i></a>
+                                    @can('conta_receber.show')
+                                        <a href="{{ route('conta_receber.show', $contaReceber->url) }}"
+                                            title="Ver Conta a Receber"><i class="fas fa-list text-dark"></i></a>
+                                    @endcan
+                                    @can('conta_receber.edit')
+                                        <a href="{{ route('conta_receber.edit', $contaReceber->url) }}" title="Editar Dados"><i
+                                                class="fa fa-edit text-primary"></i></a>
+                                    @endcan
                                 </td>
                             </tr>
                         @elseif ($contaReceber->pago === 'N')
@@ -61,11 +66,14 @@
                                 <td class="esc">{{ $contaReceber->unidade->nome }}</td>
                                 <td class="esc">{{ $contaReceber->user->name }}</td>
                                 <td>
-                                    <a href="{{ route('conta_receber.show', $contaReceber->url) }}"
-                                        title="Ver Conta a Receber"><i class="fas fa-list text-dark"></i></a>
-
-                                    <a href="{{ route('conta_receber.edit', $contaReceber->url) }}" title="Editar Dados"><i
-                                            class="fa fa-edit text-primary"></i></a>
+                                    @can('conta_receber.show')
+                                        <a href="{{ route('conta_receber.show', $contaReceber->url) }}"
+                                            title="Ver Conta a Receber"><i class="fas fa-list text-dark"></i></a>
+                                    @endcan
+                                    @can('conta_receber.edit')
+                                        <a href="{{ route('conta_receber.edit', $contaReceber->url) }}" title="Editar Dados"><i
+                                                class="fa fa-edit text-primary"></i></a>
+                                    @endcan
                                 </td>
                             </tr>
                         @endif

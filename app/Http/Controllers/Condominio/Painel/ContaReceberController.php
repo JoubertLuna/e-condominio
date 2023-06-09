@@ -32,7 +32,14 @@ class ContaReceberController extends Controller
      */
     public function index()
     {
-        $contaRecebers = $this->contaReceber->with('categoria', 'bancaria', 'bloco', 'unidade', 'user')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $contaRecebers = $this->contaReceber->with('categoria', 'bancaria', 'bloco', 'unidade', 'user')->latest()->paginate(100000000);
+        } else {
+            $contaRecebers = $this->contaReceber->where('user_id', '=', auth()->user()->id)
+                ->with('categoria', 'bancaria', 'bloco', 'unidade', 'user')
+                ->latest()
+                ->paginate(100000000);
+        }
         $categorias = $this->categoria->all('id', 'nome');
         $bancarias = $this->bancaria->all('id', 'nome');
         $blocos = $this->bloco->all('id', 'nome');

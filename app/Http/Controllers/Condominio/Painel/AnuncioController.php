@@ -24,7 +24,14 @@ class AnuncioController extends Controller
      */
     public function index()
     {
-        $anuncios = $this->anuncio->with('user')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $anuncios = $this->anuncio->with('user')->latest()->paginate(100000000);
+        } else {
+            $anuncios = $this->anuncio->where('user_id', '=', auth()->user()->id)
+                ->with('user')
+                ->latest()
+                ->paginate(100000000);
+        }
         $users = $this->user->all('id', 'name');
         return view('Condominio.Painel.Pages.Anuncio.index', compact('anuncios', 'users'));
     }

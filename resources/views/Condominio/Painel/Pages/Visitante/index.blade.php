@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('visitante.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Visitante</a>
+    @can('visitante.create')
+        <a href="{{ route('visitante.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Visitante</a>
+    @endcan
 @stop
 
 @section('content')
@@ -42,11 +44,14 @@
                             <td class="esc">{{ $visitante->hora_entrada }}</td>
                             <td class="esc">{{ $visitante->hora_saida }}</td>
                             <td>
-                                <a href="{{ route('visitante.show', $visitante->url) }}" title="Ver Visitante"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('visitante.edit', $visitante->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('visitante.show')
+                                    <a href="{{ route('visitante.show', $visitante->url) }}" title="Ver Visitante"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('visitante.edit')
+                                    <a href="{{ route('visitante.edit', $visitante->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

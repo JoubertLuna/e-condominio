@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('banco.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Banco</a>
+    @can('banco.create')
+        <a href="{{ route('banco.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Banco</a>
+    @endcan
 @stop
 
 @section('content')
@@ -26,11 +28,14 @@
                             <td>{{ $banco->codigo }}</td>
                             <td>{{ $banco->nome }}</td>
                             <td>
-                                <a href="{{ route('banco.show', $banco->url) }}" title="Ver Banco"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('banco.edit', $banco->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('banco.show')
+                                    <a href="{{ route('banco.show', $banco->url) }}" title="Ver Banco"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('banco.edit')
+                                    <a href="{{ route('banco.edit', $banco->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

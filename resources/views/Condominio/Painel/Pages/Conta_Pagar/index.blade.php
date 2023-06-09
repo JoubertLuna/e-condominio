@@ -3,8 +3,10 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('conta_pagar.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Conta a
-        Pagar</a>
+    @can('conta_pagar.create')
+        <a href="{{ route('conta_pagar.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Conta a
+            Pagar</a>
+    @endcan
 @stop
 
 @section('content')
@@ -38,11 +40,14 @@
                                 <td class="esc">{{ $contaPagar->pago === 'S' ? 'Sim' : 'Não' }}</td>
                                 <td class="esc">{{ $contaPagar->fornecedor->razao_social }}</td>
                                 <td>
-                                    <a href="{{ route('conta_pagar.show', $contaPagar->url) }}" title="Ver Conta a Pagar"><i
-                                            class="fas fa-list text-dark"></i></a>
-
-                                    <a href="{{ route('conta_pagar.edit', $contaPagar->url) }}" title="Editar Dados"><i
-                                            class="fa fa-edit text-primary"></i></a>
+                                    @can('conta_pagar.show')
+                                        <a href="{{ route('conta_pagar.show', $contaPagar->url) }}" title="Ver Conta a Pagar"><i
+                                                class="fas fa-list text-dark"></i></a>
+                                    @endcan
+                                    @can('conta_pagar.edit')
+                                        <a href="{{ route('conta_pagar.edit', $contaPagar->url) }}" title="Editar Dados"><i
+                                                class="fa fa-edit text-primary"></i></a>
+                                    @endcan
                                 </td>
                             </tr>
                         @elseif ($contaPagar->pago === 'N')
@@ -55,8 +60,8 @@
                                 <td class="esc">{{ $contaPagar->pago === 'S' ? 'Sim' : 'Não' }}</td>
                                 <td class="esc">{{ $contaPagar->fornecedor->razao_social }}</td>
                                 <td>
-                                    <a href="{{ route('conta_pagar.show', $contaPagar->url) }}" title="Ver Conta a Pagar"><i
-                                            class="fas fa-list text-dark"></i></a>
+                                    <a href="{{ route('conta_pagar.show', $contaPagar->url) }}"
+                                        title="Ver Conta a Pagar"><i class="fas fa-list text-dark"></i></a>
 
                                     <a href="{{ route('conta_pagar.edit', $contaPagar->url) }}" title="Editar Dados"><i
                                             class="fa fa-edit text-primary"></i></a>

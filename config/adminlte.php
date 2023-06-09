@@ -400,7 +400,7 @@ return [
                     'can'    => 'conta_pagar.index',
                 ],
                 [
-                    'text' => 'Contas a Receber',
+                    'text' => 'Contas a Receber do Morador',
                     'route'  => 'conta_receber.index',
                     'icon'    => 'fas fa-money-bill-alt',
                     'can'    => 'conta_receber.index',

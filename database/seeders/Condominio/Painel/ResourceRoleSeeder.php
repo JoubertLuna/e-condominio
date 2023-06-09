@@ -1704,6 +1704,16 @@ class ResourceRoleSeeder extends Seeder
 
         DB::table('resource_role')->insert([
             'role_id' => '3',
+            'resource_id' => '114',
+        ]);
+
+        DB::table('resource_role')->insert([
+            'role_id' => '3',
+            'resource_id' => '117',
+        ]);
+
+        DB::table('resource_role')->insert([
+            'role_id' => '3',
             'resource_id' => '121',
         ]);
         //Morador

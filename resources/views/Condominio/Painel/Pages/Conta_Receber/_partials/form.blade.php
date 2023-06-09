@@ -56,10 +56,12 @@
                 <label>Bloco:</label>
                 <select class="form-control" name="bloco_id" id="bloco_id" style="width: 100%;">
                     @foreach ($blocos as $bloco)
-                        @if ($bloco->id === @$contaReceber->bloco_id)
-                            <option value="{{ $bloco->id }}" selected>{{ $bloco->nome }}</option>
-                        @else
-                            <option value="{{ $bloco->id }}">{{ $bloco->nome }}</option>
+                        @if (auth()->user()->id <= '2' || $bloco->id === auth()->user()->bloco_id)
+                            @if ($bloco->id === @$contaReceber->bloco_id)
+                                <option value="{{ $bloco->id }}" selected>{{ $bloco->nome }}</option>
+                            @else
+                                <option value="{{ $bloco->id }}">{{ $bloco->nome }}</option>
+                            @endif
                         @endif
                     @endforeach
                 </select>
@@ -70,10 +72,12 @@
                 <label>Unidade:</label>
                 <select class="form-control" name="unidade_id" id="unidade_id" style="width: 100%;">
                     @foreach ($unidades as $unidade)
-                        @if ($unidade->id === @$contaReceber->unidade_id)
-                            <option value="{{ $unidade->id }}" selected>{{ $unidade->nome }}</option>
-                        @else
-                            <option value="{{ $unidade->id }}">{{ $unidade->nome }}</option>
+                        @if (auth()->user()->id <= '2' || $unidade->id === auth()->user()->unidade_id)
+                            @if ($unidade->id === @$contaReceber->unidade_id)
+                                <option value="{{ $unidade->id }}" selected>{{ $unidade->nome }}</option>
+                            @else
+                                <option value="{{ $unidade->id }}">{{ $unidade->nome }}</option>
+                            @endif
                         @endif
                     @endforeach
                 </select>
@@ -84,10 +88,12 @@
                 <label>Morador:</label>
                 <select class="form-control" name="user_id" id="user_id" style="width: 100%;">
                     @foreach ($users as $user)
-                        @if ($user->id === @$contaReceber->user_id)
-                            <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
-                        @else
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                        @if (auth()->user()->id <= '2' || $user->id === auth()->user()->id)
+                            @if ($user->id === @$contaReceber->user_id)
+                                <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
+                            @else
+                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endif
                         @endif
                     @endforeach
                 </select>

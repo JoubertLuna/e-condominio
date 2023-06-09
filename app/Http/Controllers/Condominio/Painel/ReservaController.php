@@ -27,7 +27,14 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        $reservas = $this->reserva->with('user', 'area')->paginate(100000000);
+        if (auth()->user()->id <= '2') {
+            $reservas = $this->reserva->with('user', 'area')->latest()->paginate(100000000);
+        } else {
+            $reservas = $this->reserva->where('user_id', '=', auth()->user()->id)
+                ->with('user', 'area')
+                ->latest()
+                ->paginate(100000000);
+        }
         $users = $this->user->all('id', 'name');
         $areas = $this->area->all('id', 'nome');
         return view('Condominio.Painel.Pages.Reserva.index', compact('reservas', 'users', 'areas'));
