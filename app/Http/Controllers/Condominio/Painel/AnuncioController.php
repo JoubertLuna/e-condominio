@@ -24,7 +24,7 @@ class AnuncioController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $anuncios = $this->anuncio->with('user')->latest()->paginate(100000000);
         } else {
             $anuncios = $this->anuncio->where('user_id', '=', auth()->user()->id)

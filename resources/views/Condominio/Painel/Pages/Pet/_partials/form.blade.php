@@ -46,7 +46,7 @@
                 <label>Dono do Pet:</label>
                 <select class="form-control" name="user_id" id="user_id" style="width: 100%;">
                     @foreach ($users as $user)
-                        @if (auth()->user()->id <= '2' || $user->id === auth()->user()->id)
+                        @if (auth()->user()->id <= '3' || $user->id === auth()->user()->id)
                             @if ($user->id === @$pet->user_id)
                                 <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
                             @else

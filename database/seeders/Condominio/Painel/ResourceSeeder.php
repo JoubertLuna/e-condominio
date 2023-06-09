@@ -829,5 +829,24 @@ class ResourceSeeder extends Seeder
             'resource' => 'resource.destroy',
         ]);
         //Permissão
+
+        //Config Geral
+        Resource::create([
+            'nome' => 'Condominio Geral',
+            'resource' => 'condominio.geral',
+        ]);
+        Resource::create([
+            'nome' => 'Financeiro Geral',
+            'resource' => 'financeiro.geral',
+        ]);
+        Resource::create([
+            'nome' => 'Visitante Geral',
+            'resource' => 'visitante.geral',
+        ]);
+        Resource::create([
+            'nome' => 'Configurações Geral',
+            'resource' => 'config.geral',
+        ]);
+        //Config Geral
     }
 }

@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('role.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Novo Perfil</a>
+    @can('role.create')
+        <a href="{{ route('role.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Novo Perfil</a>
+    @endcan
 @stop
 
 @section('content')
@@ -34,12 +36,14 @@
                                             class="badge badge-danger"><small>{{ $role->resources->count() }}</small></span>
                                     @endif
                                 </a>
-
-                                <a href="{{ route('role.show', $role->url) }}" title="Ver Perfil ou deletar"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('role.edit', $role->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('role.show')
+                                    <a href="{{ route('role.show', $role->url) }}" title="Ver Perfil ou deletar"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('role.edit')
+                                    <a href="{{ route('role.edit', $role->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

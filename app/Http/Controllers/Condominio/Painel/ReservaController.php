@@ -27,7 +27,7 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $reservas = $this->reserva->with('user', 'area')->latest()->paginate(100000000);
         } else {
             $reservas = $this->reserva->where('user_id', '=', auth()->user()->id)

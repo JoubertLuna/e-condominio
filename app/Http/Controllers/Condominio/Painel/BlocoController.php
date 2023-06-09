@@ -25,7 +25,7 @@ class BlocoController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $blocos = $this->bloco->with('condominio')->latest()->paginate(100000000);
         } else {
             $blocos = $this->bloco->where('id', '=', auth()->user()->bloco_id)

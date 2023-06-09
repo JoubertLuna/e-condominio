@@ -16,7 +16,7 @@
                 <label>Bloco:</label>
                 <select class="form-control" name="bloco_id" id="bloco_id" style="width: 100%;">
                     @foreach ($blocos as $bloco)
-                        @if (auth()->user()->id <= '2' || $bloco->id === auth()->user()->bloco_id)
+                        @if (auth()->user()->id <= '3' || $bloco->id === auth()->user()->bloco_id)
                             @if ($bloco->id === @$unidade->bloco_id)
                                 <option value="{{ $bloco->id }}" selected>{{ $bloco->nome }}</option>
                             @else

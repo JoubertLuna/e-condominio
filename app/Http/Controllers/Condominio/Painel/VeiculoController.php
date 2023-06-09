@@ -27,7 +27,7 @@ class VeiculoController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $veiculos = $this->veiculo->with('user', 'unidade')->latest()->paginate(100000000);
         } else {
             $veiculos = $this->veiculo->where('user_id', '=', auth()->user()->id)

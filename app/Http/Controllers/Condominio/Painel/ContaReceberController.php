@@ -32,7 +32,7 @@ class ContaReceberController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $contaRecebers = $this->contaReceber->with('categoria', 'bancaria', 'bloco', 'unidade', 'user')->latest()->paginate(100000000);
         } else {
             $contaRecebers = $this->contaReceber->where('user_id', '=', auth()->user()->id)

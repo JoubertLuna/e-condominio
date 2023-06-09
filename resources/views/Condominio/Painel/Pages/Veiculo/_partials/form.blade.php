@@ -9,7 +9,7 @@
                 <label>Unidade do Veículo:</label>
                 <select class="form-control" name="unidade_id" id="unidade_id" style="width: 100%;">
                     @foreach ($unidades as $unidade)
-                        @if (auth()->user()->id <= '2' || $unidade->id === auth()->user()->unidade_id)
+                        @if (auth()->user()->id <= '3' || $unidade->id === auth()->user()->unidade_id)
                             @if ($unidade->id === @$veiculo->unidade_id)
                                 <option value="{{ $unidade->id }}" selected>{{ $unidade->nome }}</option>
                             @else
@@ -25,7 +25,7 @@
                 <label>Dono do Veículo:</label>
                 <select class="form-control" name="user_id" id="user_id" style="width: 100%;">
                     @foreach ($users as $user)
-                        @if (auth()->user()->id <= '2' || $user->id === auth()->user()->id)
+                        @if (auth()->user()->id <= '3' || $user->id === auth()->user()->id)
                             @if ($user->id === @$veiculo->user_id)
                                 <option value="{{ $user->id }}" selected>{{ $user->name }}</option>
                             @else

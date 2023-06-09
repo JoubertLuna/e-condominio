@@ -26,7 +26,7 @@ class LivroController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $livros = $this->livro->with('user', 'area')->latest()->paginate(100000000);
         } else {
             $livros = $this->livro->where('user_id', '=', auth()->user()->id)

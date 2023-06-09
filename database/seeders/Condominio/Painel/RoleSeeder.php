@@ -21,12 +21,12 @@ class RoleSeeder extends Seeder
             'role' => 'Role_Administrador',
         ]);
         Role::create([
-            'nome' => 'Morador',
-            'role' => 'Role_Morador',
-        ]);
-        Role::create([
             'nome' => 'Portaria',
             'role' => 'Role_Portaria',
+        ]);
+        Role::create([
+            'nome' => 'Morador',
+            'role' => 'Role_Morador',
         ]);
     }
 }

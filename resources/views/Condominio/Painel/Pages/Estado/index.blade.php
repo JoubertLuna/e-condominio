@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('estado.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Estado</a>
+    @can('estado.create')
+        <a href="{{ route('estado.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Cadastrar Estado</a>
+    @endcan
 @stop
 
 @section('content')
@@ -26,11 +28,14 @@
                             <td>{{ $estado->nome_estado }}</td>
                             <td class="esc">{{ $estado->iniciais }}</td>
                             <td>
-                                <a href="{{ route('estado.show', $estado->url) }}" title="Ver Estado Cadastrado"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('estado.edit', $estado->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('estado.show')
+                                    <a href="{{ route('estado.show', $estado->url) }}" title="Ver Estado Cadastrado"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('estado.edit')
+                                    <a href="{{ route('estado.edit', $estado->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

@@ -29,7 +29,7 @@ class VisitanteController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $visitantes = $this->visitante->with('bloco', 'user', 'unidade')->latest()->paginate(100000000);
         } else {
             $visitantes = $this->visitante->where('user_id', '=', auth()->user()->id)

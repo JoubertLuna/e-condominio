@@ -58,7 +58,7 @@
                 <label>Condomínio:</label>
                 <select class="form-control" name="condominio_id" id="condominio_id" style="width: 100%;">
                     @foreach ($condominios as $condominio)
-                        @if (auth()->user()->id <= '2' || $condominio->id === auth()->user()->condominio_id)
+                        @if (auth()->user()->id <= '3' || $condominio->id === auth()->user()->condominio_id)
                             @if ($condominio->id === @$bancaria->condominio_id)
                                 <option value="{{ $condominio->id }}" selected>{{ $condominio->nome }}</option>
                             @else

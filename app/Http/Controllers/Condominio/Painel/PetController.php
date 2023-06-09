@@ -25,7 +25,7 @@ class PetController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $pets = $this->pet->with('user')->latest()->paginate(100000000);
         } else {
             $pets = $this->pet->where('user_id', '=', auth()->user()->id)

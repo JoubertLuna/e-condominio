@@ -25,7 +25,7 @@ class UnidadeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $unidades = $this->unidade->with('bloco')->latest()->paginate(100000000);
         } else {
             $unidades = $this->unidade->where('id', '=', auth()->user()->unidade_id)

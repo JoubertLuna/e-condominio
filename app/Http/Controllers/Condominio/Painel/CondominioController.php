@@ -22,7 +22,7 @@ class CondominioController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id <= '2') {
+        if (auth()->user()->id <= '3') {
             $condominios = $this->condominio->latest()->paginate(100000000);
         } else {
             $condominios = $this->condominio->where('id', '=', auth()->user()->condominio_id)

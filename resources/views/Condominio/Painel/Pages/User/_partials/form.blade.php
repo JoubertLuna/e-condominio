@@ -118,7 +118,7 @@
                 <label>Condomínio:</label>
                 <select class="form-control" name="condominio_id" id="condominio_id" style="width: 100%;">
                     @foreach ($condominios as $condominio)
-                        @if (auth()->user()->id <= '2' || $condominio->id === auth()->user()->condominio_id)
+                        @if (auth()->user()->id <= '3' || $condominio->id === auth()->user()->condominio_id)
                             @if ($condominio->id === @$user->condominio_id)
                                 <option value="{{ $condominio->id }}" selected>{{ $condominio->nome }}</option>
                             @else
@@ -134,7 +134,7 @@
                 <label>Bloco:</label>
                 <select class="form-control" name="bloco_id" id="bloco_id" style="width: 100%;">
                     @foreach ($blocos as $bloco)
-                        @if (auth()->user()->id <= '2' || $bloco->id === auth()->user()->bloco_id)
+                        @if (auth()->user()->id <= '3' || $bloco->id === auth()->user()->bloco_id)
                             @if ($bloco->id === @$user->bloco_id)
                                 <option value="{{ $bloco->id }}" selected>{{ $bloco->nome }}</option>
                             @else
@@ -150,7 +150,7 @@
                 <label>Unidade:</label>
                 <select class="form-control" name="unidade_id" id="unidade_id" style="width: 100%;">
                     @foreach ($unidades as $unidade)
-                        @if (auth()->user()->id <= '2' || $unidade->id === auth()->user()->unidade_id)
+                        @if (auth()->user()->id <= '3' || $unidade->id === auth()->user()->unidade_id)
                             @if ($unidade->id === @$user->unidade_id)
                                 <option value="{{ $unidade->id }}" selected>{{ $unidade->nome }}</option>
                             @else
