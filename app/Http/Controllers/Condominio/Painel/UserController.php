@@ -41,9 +41,9 @@ class UserController extends Controller
             $users = $this->user->with('condominio', 'bloco', 'unidade', 'role')->latest()->paginate(100000000);
         } else {
             $users = $this->user->where('id', '=', auth()->user()->id)
-            ->with('condominio', 'bloco', 'unidade', 'role')
-            ->latest()
-            ->paginate(100000000);
+                ->with('condominio', 'bloco', 'unidade', 'role')
+                ->latest()
+                ->paginate(100000000);
         }
 
         $blocos = $this->bloco->all('id', 'nome');

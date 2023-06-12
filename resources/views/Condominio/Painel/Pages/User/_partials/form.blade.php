@@ -102,10 +102,12 @@
                 <label>Perfil:</label>
                 <select class="form-control" name="role_id" id="role_id" style="width: 100%;">
                     @foreach ($roles as $role)
-                        @if ($role->id === @$user->role_id)
-                            <option value="{{ $role->id }}" selected>{{ $role->nome }}</option>
-                        @else
-                            <option value="{{ $role->id }}">{{ $role->nome }}</option>
+                        @if (auth()->user()->id <= '3' || $role->id === auth()->user()->role_id)
+                            @if ($role->id === @$user->role_id)
+                                <option value="{{ $role->id }}" selected>{{ $role->nome }}</option>
+                            @else
+                                <option value="{{ $role->id }}">{{ $role->nome }}</option>
+                            @endif
                         @endif
                     @endforeach
                 </select>

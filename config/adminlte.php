@@ -291,10 +291,14 @@ return [
 
     'menu' => [
         // Sidebar items:
-        ['header' => 'Painel Administrativo'],
+        [
+            'header' => 'Painel Administrativo',
+            'can'    => 'condominio.geral',
+        ],
         [
             'text'    => 'Condomínio',
             'icon'    => 'fas fa-building',
+            'can'    => 'condominio.geral',
             'submenu' => [
                 [
                     'text' => 'Condomínio',
@@ -364,10 +368,14 @@ return [
                 ],
             ],
         ],
-        ['header' => 'Financeiro'],
+        [
+            'header' => 'Financeiro',
+            'can'    => 'financeiro.geral',
+        ],
         [
             'text'    => 'Financeiro',
             'icon'    => 'fas fa-money-bill-alt',
+            'can'    => 'financeiro.geral',
             'submenu' => [
                 [
                     'text' => 'Banco',
@@ -409,10 +417,14 @@ return [
             ],
         ],
 
-        ['header' => 'Visitantes'],
+        [
+            'header' => 'Visitantes',
+            'can'    => 'visitante.geral',
+        ],
         [
             'text'    => 'Visitantes',
             'icon'    => 'fas fa-cogs',
+            'can'    => 'visitante.geral',
             'submenu' => [
                 [
                     'text' => 'Visitante',
@@ -423,10 +435,14 @@ return [
             ],
         ],
 
-        ['header' => 'Perfil / Permissão'],
+        [
+            'header' => 'Perfil / Permissão',
+            'can'    => 'config.geral',
+        ],
         [
             'text'    => 'Configurações de Acesso',
             'icon'    => 'fas fa-cogs',
+            'can'    => 'config.geral',
             'submenu' => [
                 [
                     'text' => 'Patrimônio',

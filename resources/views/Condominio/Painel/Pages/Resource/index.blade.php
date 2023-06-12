@@ -3,7 +3,9 @@
 @section('title', 'e-condomínio')
 
 @section('content_header')
-    <a href="{{ route('resource.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Nova Permissão</a>
+    @can('resource.create')
+        <a href="{{ route('resource.create') }}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Nova Permissão</a>
+    @endcan
 @stop
 
 @section('content')
@@ -27,19 +29,23 @@
                             <td class="esc"><b><i>{{ $resource->resource }}</i></b></td>
 
                             <td>
-                                <a href="{{ route('resources.role', $resource->id) }}" title="Inserir Permissões"><i
-                                        class="fas fa-id-card text-success"></i>
-                                    @if ($resource->roles->count() > 0)
-                                        <span
-                                            class="badge badge-danger"><small>{{ $resource->roles->count() }}</small></span>
-                                    @endif
-                                </a>
-
-                                <a href="{{ route('resource.show', $resource->url) }}" title="Ver Permissão ou deletar"><i
-                                        class="fas fa-list text-dark"></i></a>
-
-                                <a href="{{ route('resource.edit', $resource->url) }}" title="Editar Dados"><i
-                                        class="fa fa-edit text-primary"></i></a>
+                                @can('resource.role')
+                                    <a href="{{ route('resources.role', $resource->id) }}" title="Inserir Permissões"><i
+                                            class="fas fa-id-card text-success"></i>
+                                        @if ($resource->roles->count() > 0)
+                                            <span
+                                                class="badge badge-danger"><small>{{ $resource->roles->count() }}</small></span>
+                                        @endif
+                                    </a>
+                                @endcan
+                                @can('resource.show')
+                                    <a href="{{ route('resource.show', $resource->url) }}" title="Ver Permissão ou deletar"><i
+                                            class="fas fa-list text-dark"></i></a>
+                                @endcan
+                                @can('resource.edit')
+                                    <a href="{{ route('resource.edit', $resource->url) }}" title="Editar Dados"><i
+                                            class="fa fa-edit text-primary"></i></a>
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

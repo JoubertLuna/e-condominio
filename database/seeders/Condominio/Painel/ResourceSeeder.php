@@ -848,5 +848,12 @@ class ResourceSeeder extends Seeder
             'resource' => 'config.geral',
         ]);
         //Config Geral
+
+        // Permissão Perfil
+        Resource::create([
+            'nome' => 'Permissão Perfil',
+            'resource' => 'resource.role',
+        ]);
+        // Permissão Perfil
     }
 }
