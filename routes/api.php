@@ -1,19 +1,28 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Condominio\API\{
+    BlocoApiController,
+    CondominioApiController,
+    UnidadeApiController,
+    UserApiController
+};
+
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+// Condominio
+#Route Condominio
+Route::resource('condominio', CondominioApiController::class);
+#Route Condominio
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+#Route Bloco
+Route::resource('bloco', BlocoApiController::class);
+#Route Bloco
+
+#Route Unidade
+Route::resource('unidade', UnidadeApiController::class);
+#Route Unidade
+
+#Route User
+Route::resource('user', UserApiController::class);
+    #Route User
+    //Condominio
