@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Condominio\API\{
+    AreaApiController,
     AuthApiController,
     BlocoApiController,
     CondominioApiController,
+    PetApiController,
     UnidadeApiController,
-    UserApiController
+    UserApiController,
+    VeiculoApiController
 };
 
 use Illuminate\Support\Facades\Route;
@@ -33,5 +36,17 @@ Route::middleware('auth:api', 'verified')->group(function () {
     #Route User
     Route::resource('user', UserApiController::class);
     #Route User
+
+    #Route Pet
+    Route::resource('pet', PetApiController::class);
+    #Route Pet
+
+    #Route Veiculo
+    Route::resource('veiculo', VeiculoApiController::class);
+    #Route Veiculo
+
+    #Route Area
+    Route::resource('area', AreaApiController::class);
+    #Route Area
     //Condominio
 });

@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Condominio\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Condominio\Painel\CondominioRequest;
-use App\Http\Resources\Condominio\Api\Condominio\CondominioCollection;
-use App\Http\Resources\Condominio\Api\Condominio\CondominioResource;
+
+use App\Http\Resources\Condominio\Api\Condominio\{
+    CondominioCollection,
+    CondominioResource
+};
+
 use App\Models\Condominio\Painel\Condominio;
 use Illuminate\Support\Facades\Storage;
 
