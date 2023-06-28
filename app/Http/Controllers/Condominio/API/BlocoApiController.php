@@ -10,19 +10,15 @@ use App\Http\Resources\Condominio\Api\Bloco\{
     BlocoResource
 };
 
-use App\Models\Condominio\Painel\{
-    Bloco,
-    Condominio
-};
+use App\Models\Condominio\Painel\Bloco;
 
 class BlocoApiController extends Controller
 {
-    private $bloco, $condominio;
+    private $bloco;
 
-    public function __construct(Bloco $bloco, Condominio $condominio)
+    public function __construct(Bloco $bloco)
     {
         $this->bloco = $bloco;
-        $this->condominio = $condominio;
     }
     /**
      * Display a listing of the resource.

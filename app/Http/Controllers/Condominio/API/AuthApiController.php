@@ -16,23 +16,21 @@ class AuthApiController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
+            'email' => 'required|email|max:255|string',
+            'password' => 'required|min:8|max:36|string',
         ]);
-        $credentials = $request->only('email', 'password');
 
-        $token = Auth::attempt($credentials);
+        $token = Auth::guard('api')->attempt($request->only('email', 'password'));
         if (!$token) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Unauthorized',
+                'message' => 'Não autorizado',
             ], 401);
         }
 
-        $user = Auth::user();
         return response()->json([
             'status' => 'success',
-            'user' => $user,
+            'user' => Auth()->user(),
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
@@ -45,7 +43,7 @@ class AuthApiController extends Controller
         Auth::logout();
         return response()->json([
             'status' => 'success',
-            'message' => 'Successfully logged out',
+            'message' => 'Desconectado com sucesso',
         ]);
     }
 

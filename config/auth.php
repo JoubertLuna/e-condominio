@@ -16,9 +16,6 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
-
-        'guard' => 'api',
-        'passwords' => 'users',
     ],
 
     /*
@@ -72,11 +69,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Condominio\Painel\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

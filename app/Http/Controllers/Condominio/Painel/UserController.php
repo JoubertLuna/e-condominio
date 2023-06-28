@@ -164,7 +164,7 @@ class UserController extends Controller
             return redirect()->back();
         }
 
-        if ($user->id <= '3') {
+        if ($user->id <= '4') {
             return redirect()->back()->with('error', 'Você não pode deletar usuário padrão do sistema');
         }
 
